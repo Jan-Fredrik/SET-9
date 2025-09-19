@@ -2,5 +2,5 @@
 
 
 public class main {
-    String commit = "hei Jan Fredrik";
+    String commit = "Jan Fredrik er ekstremt kjekk";
 }
