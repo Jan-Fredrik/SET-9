@@ -6,8 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SET-9" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SET-9" target="23" />
+    </bytecodeTargetLevel>
   </component>
 </project>
