@@ -21,5 +21,4 @@ public class configMain {
             config.saveTo();
         }
     }
-
-}
+    
