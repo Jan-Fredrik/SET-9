@@ -4,7 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class profil {
 
-    // Sett disse verdiene til ditt oppsett
+
     private static final String DB_URL = "jdbc:mysql://localhost:3306/profiloppretting?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "datahaha";
@@ -31,10 +31,10 @@ public class profil {
                 return;
             }
 
-            // 2) Hash passordet med BCrypt (anbefalt)
+
             String passordHash = BCrypt.hashpw(passord, BCrypt.gensalt(12));
 
-            // 3) Lagre til database
+
             String sql = "INSERT INTO Profil (navn, epost, telefon, passord) VALUES (?, ?, ?, ?)";
 
             try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
