@@ -4,7 +4,7 @@ public class passord {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // Opprette et passord første gang
+        //prøver dette først
         System.out.print("Lag et passord: ");
         String lagretPassord = input.nextLine();
 

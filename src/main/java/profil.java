@@ -12,7 +12,7 @@ public class profil {
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
 
-            // 1) Les inn data
+
             System.out.print("Skriv inn navnet ditt: ");
             String navn = input.nextLine().trim();
 
@@ -25,7 +25,7 @@ public class profil {
             System.out.print("Velg et passord: ");
             String passord = input.nextLine();
 
-            // (valgfritt) Enkle sjekker
+
             if (navn.isEmpty() || epost.isEmpty() || telefon.isEmpty() || passord.isEmpty()) {
                 System.out.println("Alle felter må fylles ut.");
                 return;
