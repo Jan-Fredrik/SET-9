@@ -1,3 +1,5 @@
+package models;
+
 import java.sql.*;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -48,7 +50,7 @@ public class Betaling {
             stmtUpdate.setInt(2, brukerId);
             stmtUpdate.executeUpdate();
 
-            System.out.println("Betaling simulert – status oppdatert til PAID");
+            System.out.println("models.Betaling simulert – status oppdatert til PAID");
 
             String sqlSelect = "SELECT b.bestilling_id, b.rute, b.destinasjon, b.pris, b.status, u.navn FROM Bestilling b JOIN Bruker u ON b.bruker_id = u.bruker_id";
             Statement stmtSelect = conn.createStatement();

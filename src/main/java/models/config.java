@@ -1,4 +1,4 @@
-
+package models;
 
 import java.io.*;
 import java.util.Properties;
@@ -15,7 +15,7 @@ class Config {
     public void loadFrom() {
         try (FileInputStream in = new FileInputStream(fileName)) {
             props.load(in);
-            System.out.println("Config lastet fra " + fileName);
+            System.out.println("models.Config lastet fra " + fileName);
         } catch (IOException e) {
             System.out.println("Ingen eksisterende config, starter med tom.");
         }
@@ -25,7 +25,7 @@ class Config {
     public void saveTo() {
         try (FileOutputStream out = new FileOutputStream(fileName)) {
             props.store(out, "App Settings");
-            System.out.println("Config lagret til " + fileName);
+            System.out.println("models.Config lagret til " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

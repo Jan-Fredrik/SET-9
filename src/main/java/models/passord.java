@@ -1,3 +1,5 @@
+package models;
+
 import java.util.Scanner;
 
 public class passord {
@@ -5,7 +7,7 @@ public class passord {
         Scanner input = new Scanner(System.in);
 
         //prøver dette først
-        System.out.print("Lag et passord: ");
+        System.out.print("Lag et models.passord: ");
         String lagretPassord = input.nextLine();
 
         System.out.println("Passordet ditt er lagret!\n");
@@ -13,7 +15,7 @@ public class passord {
         boolean kjører = true;
         while (kjører) {
             System.out.println("=== MENY ===");
-            System.out.println("1. Glemt passord");
+            System.out.println("1. Glemt models.passord");
             System.out.println("2. Avslutt");
             System.out.print("Velg et tall: ");
             int valg = input.nextInt();
@@ -22,9 +24,9 @@ public class passord {
             switch (valg) {
                 case 1:
                     System.out.println("=== GLEMT PASSORD ===");
-                    System.out.print("Lag nytt passord: ");
+                    System.out.print("Lag nytt models.passord: ");
                     lagretPassord = input.nextLine();
-                    System.out.println("Nytt passord er lagret!\n");
+                    System.out.println("Nytt models.passord er lagret!\n");
                     break;
 
 

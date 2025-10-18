@@ -1,3 +1,5 @@
+package models;
+
 import java.sql.*;
 import java.util.Scanner;
 import org.mindrot.jbcrypt.BCrypt;
@@ -22,7 +24,7 @@ public class profil {
             System.out.print("Skriv inn telefonnummer: ");
             String telefon = input.nextLine().trim();
 
-            System.out.print("Velg et passord: ");
+            System.out.print("Velg et models.passord: ");
             String passord = input.nextLine();
 
 

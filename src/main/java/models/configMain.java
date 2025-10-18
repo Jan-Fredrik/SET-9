@@ -1,3 +1,5 @@
+package models;
+
 public class configMain {
 
         public static void main(String[] args) {
