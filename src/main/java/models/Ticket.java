@@ -135,9 +135,9 @@ public class Ticket {
     public static void clearAllTickets() {
         try (FileWriter writer = new FileWriter(FILE_NAME, false)) { // false = overskriv fil
             writer.write(""); // skriver ingenting, bare tømmer
-            System.out.println("Alle billetter er slettet fra lokal lagring.");
+            System.out.println("Alle billettan e sletta JF");
         } catch (IOException e) {
-            System.out.println("Kunne ikke tømme billettfilen: " + e.getMessage());
+            System.out.println("nope" + e.getMessage());
         }
     }
 

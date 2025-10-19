@@ -70,6 +70,10 @@ public class Betaling {
 
             conn.close();
 
+            RouteChange routeManager = new RouteChange();
+            RouteTrigger routeTrigger = new RouteTrigger(routeManager);
+            routeTrigger.wakeUpRouteChange();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
