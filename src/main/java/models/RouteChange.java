@@ -13,7 +13,7 @@ public class RouteChange {
                 "Melding: Ruten du har valgt er utsolgt. Forvent lang ventetid"
         };
         String chosen = events[random.nextInt(events.length)];
-        System.out.println("[RouteManager] " + chosen);
+        System.out.println("[RouteChange] " + chosen);
     }
 }
 
