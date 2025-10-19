@@ -10,9 +10,8 @@ public class RouteTrigger {
         this.routeChange = routeChange;
     }
 
-    // Kall denne når du vil at rute-endring skal skje
     public void wakeUpRouteChange() {
-        if (random.nextInt(3) == 0) {
+        if (random.nextInt(3) == 0) { //1/3 ganger vil meldingen vises
             routeChange.triggerRandomRouteChange();
         }
     }
