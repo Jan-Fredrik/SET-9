@@ -7,21 +7,21 @@ public class Route {
     // Attributes
     private int id;
     private String name;
-    private ArrayList<String> listOfStops;
+    private ArrayList<StopPlace> listOfStops;
     private String typeOfPublicTransport;
 
     // Constructors
 
     public Route () {}
 
-    public Route(int id, String name, ArrayList<String> listOfStops, String typeOfPublicTransport) {
+    public Route(int id, String name, ArrayList<StopPlace> listOfStops, String typeOfPublicTransport) {
         this.id = id;
         this.name = name;
         this.listOfStops = listOfStops;
         this.typeOfPublicTransport = typeOfPublicTransport;
     }
 
-    public Route(String name, ArrayList<String> listOfStops, String typeOfPublicTransport) {
+    public Route(String name, ArrayList<StopPlace> listOfStops, String typeOfPublicTransport) {
         this.name = name;
         this.listOfStops = listOfStops;
         this.typeOfPublicTransport = typeOfPublicTransport;
@@ -45,11 +45,11 @@ public class Route {
         this.name = name;
     }
 
-    public ArrayList<String> getListOfStops() {
+    public ArrayList<StopPlace> getListOfStops() {
         return listOfStops;
     }
 
-    public void setListOfStops(ArrayList<String> listOfStops) {
+    public void setListOfStops(ArrayList<StopPlace> listOfStops) {
         this.listOfStops = listOfStops;
     }
 
