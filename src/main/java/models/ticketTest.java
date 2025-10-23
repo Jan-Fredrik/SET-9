@@ -9,13 +9,13 @@ public class ticketTest {
 
         Ticket.clearAllTickets();
 
+        new Ticket("Ole Edvard Antonsen",
+                "Oslo - Drammen", 75);
 
-        new Ticket("Karin Olsen", "Oslo - Drammen", 75);
-        new Ticket("Erik Hansen", "Oslo - Lillestrøm", 65);
+        new Ticket("Erik Hansen",
+                "Oslo - Lillestrøm", 65);
 
-        // Henter billetter kjøpt i dag
         List<Ticket> todayTickets = Ticket.getTicketsByDate(LocalDate.now());
-
         for (Ticket t : todayTickets) {
             System.out.println(t);
         }
