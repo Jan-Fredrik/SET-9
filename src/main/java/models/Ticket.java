@@ -107,7 +107,7 @@ public class Ticket {
 
                 if (line.startsWith("ID:")) {
                     id = line.substring(3).trim();
-                } else if (line.startsWith("Navn:")) {
+                } else if (line.startsWith("Navn: ")) {
                     name = line.substring(5).trim();
                 } else if (line.startsWith("Rute:")) {
                     route = line.substring(5).trim();
