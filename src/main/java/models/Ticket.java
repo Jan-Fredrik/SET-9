@@ -205,4 +205,12 @@ public class Ticket {
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
+
+    public String getTicketID() {
+        return ticketID;
+    }
+
+    public void setTicketID(String ticketID) {
+        this.ticketID = ticketID;
+    }
 }
