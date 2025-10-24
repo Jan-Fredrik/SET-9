@@ -75,7 +75,6 @@ public class Ticket {
 
         saveTicketLocally(); // lagre automatisk ved opprettelse
     }
-
                                 // METODER //
 
     private void saveTicketLocally() {
