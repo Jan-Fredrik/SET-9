@@ -77,6 +77,10 @@ public class Ticket {
     }
                                 // METODER //
 
+    // ////////////////////////////////////////////////
+    // Lagrer billetten til local_tickets.txt
+    //
+
     private void saveTicketLocally() {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
@@ -91,8 +95,10 @@ public class Ticket {
         }
     }
 
+    // ///////////////////////////////////////////////
+    // Henter alle billetter kjøpt på en spesifikk dato
+    //
 
-    // Hent alle billetter kjøpt på en spesifikk dato
     public static List<Ticket> getTicketsByDate(LocalDate date) {
         List<Ticket> tickets = new ArrayList<>();
 
@@ -129,8 +135,9 @@ public class Ticket {
         return tickets;
     }
 
-
-
+    // //////////////////////////////////////////////////////////////////////
+    // Metoden her er bare lagd for å renske local_tickets.txt under testing
+    //
     public static void clearAllTickets() {
         try (FileWriter writer = new FileWriter(FILE_NAME, false)) { // false = overskriv fil
             writer.write(""); // skriver ingenting, bare tømmer
