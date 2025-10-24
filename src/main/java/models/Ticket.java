@@ -81,7 +81,7 @@ public class Ticket {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
             writer.write("Kjøps-ID: " + ticketID + "\n");
-            writer.write("Navn:" + passengerName + "\n");
+            writer.write("Navn: " + passengerName + "\n");
             writer.write("Rute:" + route + "\n");
             writer.write("Pris:" + price + "\n");
             writer.write("Kjøpt:" + purchaseTime.format(FORMATTER) + "\n");
@@ -107,7 +107,7 @@ public class Ticket {
 
                 if (line.startsWith("ID:")) {
                     id = line.substring(3).trim();
-                } else if (line.startsWith("Navn: ")) {
+                } else if (line.startsWith("Navn:")) {
                     name = line.substring(5).trim();
                 } else if (line.startsWith("Rute:")) {
                     route = line.substring(5).trim();
