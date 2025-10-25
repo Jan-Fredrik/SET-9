@@ -24,12 +24,11 @@ public class Ticket {
 
     // Attributter JF la til ift. billett-lagring
     private String ticketID;
-    private static final String FILE_NAME = "local_tickets.txt";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private String passengerName;
     private String route;
     private LocalDateTime purchaseTime;
-
+    private static final String FILE_NAME = "local_tickets.txt";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     //attributter for å holde en bruker, kanskje en billettype (Vy, Østfold Kollektiv osv)
     //attributt for om en billett er gyldig, et objekt av Order, holde på rabbatt (student/honnør)
