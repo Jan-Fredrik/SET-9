@@ -4,7 +4,7 @@ Kjøps-ID: null
 Navn:Ole Edvard Antonsen
 Rute:Oslo - Drammen
 Pris:75.0
-Kjøpt:2025-10-24 16:00:19
+Kjøpt:2025-10-24 17:00:36
 =======================
 
 ==== BUSS BILLETT ====
@@ -12,5 +12,13 @@ Kjøps-ID: null
 Navn:Erik Hansen
 Rute:Oslo - Lillestrøm
 Pris:65.0
-Kjøpt:2025-10-24 16:00:19
+Kjøpt:2025-10-24 17:00:36
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Navn:Test Testedal
+Rute:Kristiansund - Halden
+Pris:42000000.0
+Kjøpt:2025-10-22 17:00:36
 =======================
