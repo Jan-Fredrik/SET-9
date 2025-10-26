@@ -13,8 +13,8 @@ public class configMain {
             config.set("font.size", "14");
 
             // Lese verdier
-            String lang = config.get("language", "en");
-            String font = config.get("font.size", "12");
+            String lang = config.get("language", "snørr");
+            String font = config.get("font.size", "12000");
 
             System.out.println("Språk: " + lang);
             System.out.println("Skriftstørrelse: " + font);

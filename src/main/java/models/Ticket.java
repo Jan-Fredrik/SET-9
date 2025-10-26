@@ -24,12 +24,11 @@ public class Ticket {
 
     // Attributter JF la til ift. billett-lagring
     private String ticketID;
-    private static final String FILE_NAME = "local_tickets.txt";
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private String passengerName;
     private String route;
     private LocalDateTime purchaseTime;
-
+    private static final String FILE_NAME = "local_tickets.txt";
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     //attributter for å holde en bruker, kanskje en billettype (Vy, Østfold Kollektiv osv)
     //attributt for om en billett er gyldig, et objekt av Order, holde på rabbatt (student/honnør)
@@ -75,14 +74,17 @@ public class Ticket {
 
         saveTicketLocally(); // lagre automatisk ved opprettelse
     }
-
                                 // METODER //
+
+    // ////////////////////////////////////////////////
+    // Lagrer billetten til local_tickets.txt
+    //
 
     private void saveTicketLocally() {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
             writer.write("Kjøps-ID: " + ticketID + "\n");
-            writer.write("Navn:" + passengerName + "\n");
+            writer.write("Navn: " + passengerName + "\n");
             writer.write("Rute:" + route + "\n");
             writer.write("Pris:" + price + "\n");
             writer.write("Kjøpt:" + purchaseTime.format(FORMATTER) + "\n");
@@ -92,8 +94,10 @@ public class Ticket {
         }
     }
 
+    // ///////////////////////////////////////////////
+    // Henter alle billetter kjøpt på en spesifikk dato
+    //
 
-    // Hent alle billetter kjøpt på en spesifikk dato
     public static List<Ticket> getTicketsByDate(LocalDate date) {
         List<Ticket> tickets = new ArrayList<>();
 
@@ -130,8 +134,9 @@ public class Ticket {
         return tickets;
     }
 
-
-
+    // //////////////////////////////////////////////////////////////////////
+    // Metoden her er bare lagd for å renske local_tickets.txt under testing
+    //
     public static void clearAllTickets() {
         try (FileWriter writer = new FileWriter(FILE_NAME, false)) { // false = overskriv fil
             writer.write(""); // skriver ingenting, bare tømmer
@@ -205,5 +210,13 @@ public class Ticket {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public String getTicketID() {
+        return ticketID;
+    }
+
+    public void setTicketID(String ticketID) {
+        this.ticketID = ticketID;
     }
 }
