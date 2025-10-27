@@ -1,76 +1,63 @@
 {
-  "bussruter": [
+  "steder": [
     {
-      "rutenummer": "31",
-      "navn": "Snarøya - Fornebu - Oslo sentrum - Tonsenhagen",
+      "sted": "Halden",
       "stoppesteder": [
-        {"navn": "Snarøya"},
-        {"navn": "Fornebu Senter"},
-        {"navn": "Skøyen"},
-        {"navn": "Nationaltheatret"},
-        {"navn": "Tonsenhagen"}
-      ],
-      "frekvens_minutter": 10,
-      "type": "Bybuss"
+        "Halden stasjon",
+        "Halden torv",
+        "Porsnes videregående skole",
+        "Remmen studentby",
+        "Busterudparken",
+        "Brødløs",
+        "Øberg"
+      ]
     },
     {
-      "rutenummer": "200",
-      "navn": "Oslo - Lillestrøm - Gardermoen",
+      "sted": "Sarpsborg",
       "stoppesteder": [
-        {"navn": "Oslo bussterminal"},
-        {"navn": "Lillestrøm stasjon"},
-        {"navn": "Gardermoen"}
-      ],
-      "frekvens_minutter": 30,
-      "type": "Flybuss"
+        "Sarpsborg bussterminal",
+        "Sarpsborg torg",
+        "Valaskjold bru",
+        "Tune kirke",
+        "Kalnes sykehus",
+        "Klavestadhaugen",
+        "Sandbakken"
+      ]
     },
     {
-      "rutenummer": "54",
-      "navn": "Kjelsås - Torshov - Aker Brygge",
+      "sted": "Fredrikstad",
       "stoppesteder": [
-        {"navn": "Kjelsås stasjon"},
-        {"navn": "Torshov"},
-        {"navn": "St. Hanshaugen"},
-        {"navn": "Aker Brygge"}
-      ],
-      "frekvens_minutter": 15,
-      "type": "Bybuss"
+        "Fredrikstad bussterminal",
+        "St. Croix",
+        "Lisleby",
+        "Kråkerøy",
+        "Rolvsøy",
+        "Gressvik",
+        "Ørebekk"
+      ]
     },
     {
-      "rutenummer": "12",
-      "navn": "Sandbakken - Sentrum - Kalnes",
+      "sted": "Moss",
       "stoppesteder": [
-        {"navn": "Rokkeveien Snuplass"},
-        {"navn": "Rokkeveien 102"},
-        {"navn": "Rokkeveien 56"},
-        {"navn": "Sandbakken"},
-        {"navn": "Sandbakken Skole"},
-        {"navn": "Klavestadhaugen"},
-        {"navn": "Klavestadgata"},
-        {"navn": "Moensletta"},
-        {"navn": "Edonbakken"},
-        {"navn": "Hafslund Esso"},
-        {"navn": "Hafslund Hovedgård"},
-        {"navn": "St. Olavs Voll"},
-        {"navn": "St. Maries Plass"},
-        {"navn": "Sarpsborg Rådhus"},
-        {"navn": "Sarpsborg Torg"},
-        {"navn": "Sarpsborg Bussterminal"},
-        {"navn": "Helsehuset Sarpsborg"},
-        {"navn": "Valaskjold Bru"},
-        {"navn": "Landekrysset"},
-        {"navn": "Valaskjold Omsorgsenter"},
-        {"navn": "Tune Kirke"},
-        {"navn": "Tingvollheimen"},
-        {"navn": "Tune Rådhus"},
-        {"navn": "Borgbygget"},
-        {"navn": "Inspiria Science Center"},
-        {"navn": "Bjørnstadjordet Fv. 118"},
-        {"navn": "Kalnessletta"},
-        {"navn": "Sykehuset Østfold Kalnes"}
-      ],
-      "frekvens_minutter": 15,
-      "type": "Regionbuss"
+        "Moss jernbanestasjon",
+        "Moss bussterminal",
+        "Varnaveien",
+        "Melløs stadion",
+        "Nøkkeland skole",
+        "Jeløya kirke"
+      ]
+    },
+    {
+      "sted": "Askim",
+      "stoppesteder": [
+        "Askim stasjon",
+        "Askim torv",
+        "Grønli skole",
+        "Løken ungdomsskole",
+        "Slitu",
+        "Grøtvedt"
+      ]
     }
   ]
 }
+
