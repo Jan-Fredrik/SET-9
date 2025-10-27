@@ -4,7 +4,6 @@
       "rutenummer": "31",
       "navn": "Snarøya - Fornebu - Oslo sentrum - Tonsenhagen",
       "operatør": "Ruter",
-      "gyldig_fra": "2025-08-15",
       "stoppesteder": [
         {"navn": "Snarøya", "tid": "06:00"},
         {"navn": "Fornebu Senter", "tid": "06:10"},
@@ -19,7 +18,6 @@
       "rutenummer": "200",
       "navn": "Oslo - Lillestrøm - Gardermoen",
       "operatør": "Vy Buss",
-      "gyldig_fra": "2025-09-01",
       "stoppesteder": [
         {"navn": "Oslo bussterminal", "tid": "07:00"},
         {"navn": "Lillestrøm stasjon", "tid": "07:30"},
@@ -32,7 +30,6 @@
       "rutenummer": "54",
       "navn": "Kjelsås - Torshov - Aker Brygge",
       "operatør": "Ruter",
-      "gyldig_fra": "2025-08-15",
       "stoppesteder": [
         {"navn": "Kjelsås stasjon", "tid": "08:00"},
         {"navn": "Torshov", "tid": "08:10"},
@@ -46,7 +43,6 @@
       "rutenummer": "12",
       "navn": "Sandbakken - Sentrum - Kalnes",
       "operatør": "Østfold Kollektivtrafikk",
-      "gyldig_fra": "2025-10-26",
       "stoppesteder": [
         {"navn": "Rokkeveien Snuplass", "tid": "05:35"},
         {"navn": "Rokkeveien 102", "tid": "05:40"},
