@@ -4,10 +4,8 @@
       "sted": "Halden",
       "stoppesteder": [
         "Halden stasjon",
-        "Halden torv",
-        "Porsnes videregående skole",
-        "Remmen studentby",
         "Busterudparken",
+        "Remmen",
         "Brødløs",
         "Øberg"
       ]
@@ -16,11 +14,9 @@
       "sted": "Sarpsborg",
       "stoppesteder": [
         "Sarpsborg bussterminal",
-        "Sarpsborg torg",
         "Valaskjold bru",
         "Tune kirke",
         "Kalnes sykehus",
-        "Klavestadhaugen",
         "Sandbakken"
       ]
     },
@@ -31,16 +27,13 @@
         "St. Croix",
         "Lisleby",
         "Kråkerøy",
-        "Rolvsøy",
-        "Gressvik",
-        "Ørebekk"
+        "Gressvik"
       ]
     },
     {
       "sted": "Moss",
       "stoppesteder": [
-        "Moss jernbanestasjon",
-        "Moss bussterminal",
+        "Moss stasjon",
         "Varnaveien",
         "Melløs stadion",
         "Nøkkeland skole",
@@ -53,11 +46,34 @@
         "Askim stasjon",
         "Askim torv",
         "Grønli skole",
-        "Løken ungdomsskole",
         "Slitu",
         "Grøtvedt"
+      ]
+    },
+    {
+      "sted": "Tønsberg",
+      "stoppesteder": [
+        "Tønsberg jernbanestasjon",
+        "Farmandstredet",
+        "Kilen",
+        "Eik",
+        "Presterød ungdomsskole",
+        "Barkåker"
+      ]
+    },
+    {
+      "sted": "Oslo",
+      "stoppesteder": [
+        "Oslo bussterminal",
+        "Jernbanetorget",
+        "Nationaltheatret",
+        "Majorstuen",
+        "Blindern",
+        "Storo",
+        "Tonsenhagen"
       ]
     }
   ]
 }
+
 
