@@ -1,0 +1,84 @@
+{
+  "bussruter": [
+    {
+      "rutenummer": "31",
+      "navn": "Snarøya - Fornebu - Oslo sentrum - Tonsenhagen",
+      "operatør": "Ruter",
+      "gyldig_fra": "2025-08-15",
+      "stoppesteder": [
+        {"navn": "Snarøya", "tid": "06:00"},
+        {"navn": "Fornebu Senter", "tid": "06:10"},
+        {"navn": "Skøyen", "tid": "06:25"},
+        {"navn": "Nationaltheatret", "tid": "06:35"},
+        {"navn": "Tonsenhagen", "tid": "06:55"}
+      ],
+      "frekvens_minutter": 10,
+      "type": "Bybuss"
+    },
+    {
+      "rutenummer": "200",
+      "navn": "Oslo - Lillestrøm - Gardermoen",
+      "operatør": "Vy Buss",
+      "gyldig_fra": "2025-09-01",
+      "stoppesteder": [
+        {"navn": "Oslo bussterminal", "tid": "07:00"},
+        {"navn": "Lillestrøm stasjon", "tid": "07:30"},
+        {"navn": "Gardermoen", "tid": "08:00"}
+      ],
+      "frekvens_minutter": 30,
+      "type": "Flybuss"
+    },
+    {
+      "rutenummer": "54",
+      "navn": "Kjelsås - Torshov - Aker Brygge",
+      "operatør": "Ruter",
+      "gyldig_fra": "2025-08-15",
+      "stoppesteder": [
+        {"navn": "Kjelsås stasjon", "tid": "08:00"},
+        {"navn": "Torshov", "tid": "08:10"},
+        {"navn": "St. Hanshaugen", "tid": "08:20"},
+        {"navn": "Aker Brygge", "tid": "08:35"}
+      ],
+      "frekvens_minutter": 15,
+      "type": "Bybuss"
+    },
+    {
+      "rutenummer": "12",
+      "navn": "Sandbakken - Sentrum - Kalnes",
+      "operatør": "Østfold Kollektivtrafikk",
+      "gyldig_fra": "2025-10-26",
+      "stoppesteder": [
+        {"navn": "Rokkeveien Snuplass", "tid": "05:35"},
+        {"navn": "Rokkeveien 102", "tid": "05:40"},
+        {"navn": "Rokkeveien 56", "tid": "05:43"},
+        {"navn": "Sandbakken", "tid": "05:48"},
+        {"navn": "Sandbakken Skole", "tid": "05:49"},
+        {"navn": "Klavestadhaugen", "tid": "05:52"},
+        {"navn": "Klavestadgata", "tid": "05:55"},
+        {"navn": "Moensletta", "tid": "05:58"},
+        {"navn": "Edonbakken", "tid": "06:00"},
+        {"navn": "Hafslund Esso", "tid": "06:02"},
+        {"navn": "Hafslund Hovedgård", "tid": "06:05"},
+        {"navn": "St. Olavs Voll", "tid": "06:10"},
+        {"navn": "St. Maries Plass", "tid": "06:12"},
+        {"navn": "Sarpsborg Rådhus", "tid": "06:15"},
+        {"navn": "Sarpsborg Torg", "tid": "06:17"},
+        {"navn": "Sarpsborg Bussterminal", "tid": "06:20"},
+        {"navn": "Helsehuset Sarpsborg", "tid": "06:22"},
+        {"navn": "Valaskjold Bru", "tid": "06:25"},
+        {"navn": "Landekrysset", "tid": "06:27"},
+        {"navn": "Valaskjold Omsorgsenter", "tid": "06:30"},
+        {"navn": "Tune Kirke", "tid": "06:34"},
+        {"navn": "Tingvollheimen", "tid": "06:36"},
+        {"navn": "Tune Rådhus", "tid": "06:38"},
+        {"navn": "Borgbygget", "tid": "06:40"},
+        {"navn": "Inspiria Science Center", "tid": "06:42"},
+        {"navn": "Bjørnstadjordet Fv. 118", "tid": "06:45"},
+        {"navn": "Kalnessletta", "tid": "06:50"},
+        {"navn": "Sykehuset Østfold Kalnes", "tid": "06:55"}
+      ],
+      "frekvens_minutter": 15,
+      "type": "Regionbuss"
+    }
+  ]
+}
