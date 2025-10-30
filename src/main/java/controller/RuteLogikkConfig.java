@@ -3,7 +3,7 @@ package controller;
 import java.io.*;
 import java.util.Properties;
 
-class RuteLogikkConfig {
+public class RuteLogikkConfig {
     private final Properties props = new Properties();
     private final String fileName;
 
@@ -11,11 +11,11 @@ class RuteLogikkConfig {
         this.fileName = fileName;
     }
 
-    // Lese fra fil (hvis den finnes)
+    // Lese fra fil
     public void loadFrom() {
         try (FileInputStream in = new FileInputStream(fileName)) {
             props.load(in);
-            System.out.println("models.Config lastet fra " + fileName);
+            System.out.println("Preferanser og innstillinger lastet fra " + fileName);
         } catch (IOException e) {
             System.out.println("Ingen eksisterende config, starter med tom.");
         }
@@ -25,7 +25,7 @@ class RuteLogikkConfig {
     public void saveTo() {
         try (FileOutputStream out = new FileOutputStream(fileName)) {
             props.store(out, "App Settings");
-            System.out.println("models.Config lagret til " + fileName);
+            System.out.println("Filtrerings-preferanse lagret til " + fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
