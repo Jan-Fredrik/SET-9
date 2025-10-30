@@ -66,7 +66,17 @@ public class RouteController {
         view.visMelding("Til:");
         view.visMelding(tilBy + " - " + tilStopp);
 
+        /*
+        ///////////////////////////////////////////////////////////////////////////
+        Huske liste for meg selv
+        fraBy
+        fraStopp
 
+        tilBy
+        tilStopp
+
+
+         */
 
 
 

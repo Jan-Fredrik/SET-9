@@ -83,4 +83,14 @@ public class FakeBussAPI {
             System.out.println("Ugyldig valg – prøv igjen.");
         }
     }
+
+
+
+
+
+
+
+
+
+
 }
