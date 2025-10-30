@@ -1,13 +1,13 @@
-package models;
+package controller;
 
 import java.io.*;
 import java.util.Properties;
 
-class Config {
+class RuteLogikkConfig {
     private final Properties props = new Properties();
     private final String fileName;
 
-    public Config(String fileName) {
+    public RuteLogikkConfig(String fileName) {
         this.fileName = fileName;
     }
 

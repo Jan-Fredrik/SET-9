@@ -14,23 +14,63 @@ public class RouteController {
         this.view = view;
     }
 
-    public void velgReise(Scanner sc) {
+    public void velgReise(Scanner brukerInput) {
+
+        // ////////////////////
+        // Viktige variabler
+
+        boolean enkeltBillett = false;
+        boolean periodeBillett = false;
+
+        //
+        // /////////////////////
+
+        view.visMelding("\n--- Billettkjøp ---\n");
+
+        // //////////////////////
+        // Velg billettype
+        //
+        view.visMelding("Velg billettype:");
+        view.visMelding("1. Enkeltbillett");
+        view.visMelding("2. Periodebillett");
+        System.out.print("Skriv tallet til valget ditt: ");
+
+        String valg = brukerInput.nextLine().trim();
+        switch (valg) {
+            case "1" -> {
+                enkeltBillett = true;
+                view.visMelding("Du har valgt ENKELTBILLETT.\n");
+            }
+            case "2" -> {
+                periodeBillett = true;
+                view.visMelding("Du har valgt PERIODEBILLETT.\n");
+            }
+            default -> {
+                view.visMelding("Ugyldig valg – standard settes til ENKELTBILLETT.\n");
+                enkeltBillett = true;
+            }
+        }
 
 
-
-        // Velg avreisested
-        String fraBy = velgBy("Velg byen du reiser FRA", sc);
-        String fraStopp = velgStoppested(fraBy, "Velg stoppested du reiser FRA", sc);
+        // Velg reiser FRA
+        String fraBy = velgBy("Velg byen du reiser FRA", brukerInput);
+        String fraStopp = velgStoppested(fraBy, "Velg stoppested du reiser FRA", brukerInput);
 
         // Velg destinasjon
-        String tilBy = velgBy("Velg byen du skal reise TIL", sc);
-        String tilStopp = velgStoppested(tilBy, "Velg stoppested du skal reise TIL", sc);
+        String tilBy = velgBy("Velg byen du skal reise TIL", brukerInput);
+        String tilStopp = velgStoppested(tilBy, "Velg stoppested du skal reise TIL", brukerInput);
 
-        // Vis resultatet
+        // resultat
         view.visMelding("\nDu valgte å reise fra:");
         view.visMelding(fraBy + " - " + fraStopp);
         view.visMelding("Til:");
         view.visMelding(tilBy + " - " + tilStopp);
+
+
+
+
+
+
     }
 
 
