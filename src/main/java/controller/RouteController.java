@@ -56,7 +56,7 @@ public class RouteController {
         String fraBy = velgBy("Velg byen du reiser FRA", brukerInput);
         String fraStopp = velgStoppested(fraBy, "Velg stoppested du reiser FRA", brukerInput);
 
-        // Velg destinasjon
+        // Velg DESTINASJON
         String tilBy = velgBy("Velg byen du skal reise TIL", brukerInput);
         String tilStopp = velgStoppested(tilBy, "Velg stoppested du skal reise TIL", brukerInput);
 
@@ -77,6 +77,9 @@ public class RouteController {
 
 
          */
+
+
+
 
 
 

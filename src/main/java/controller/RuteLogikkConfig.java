@@ -32,12 +32,12 @@ public class RuteLogikkConfig {
     }
 
     // Hente verdi med fallback
-    public String get(String key, String defaultValue) {
+    public String getPrefValue(String key, String defaultValue) {
         return props.getProperty(key, defaultValue);
     }
 
     // Sette verdi
-    public void set(String key, String value) {
+    public void setPrefValue(String key, String value) {
         props.setProperty(key, value);
     }
 }

@@ -10,12 +10,12 @@ public class configMain {
         config.loadFrom();
 
         // Sette noen verdier
-        config.set("language", "no");
-        config.set("font.size", "14");
+        config.setPrefValue("language", "no");
+        config.setPrefValue("font.size", "14");
 
         // Lese verdier (med fallback dersom nøkkelen ikke finnes)
-        String lang = config.get("language", "ukjent");
-        String font = config.get("font.size", "12");
+        String lang = config.getPrefValue("language", "ukjent");
+        String font = config.getPrefValue("font.size", "12");
 
         System.out.println("Språk: " + lang);
         System.out.println("Skriftstørrelse: " + font);
