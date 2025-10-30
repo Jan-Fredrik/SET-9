@@ -63,31 +63,7 @@ public class FakeBussAPI {
         return data.getOrDefault(city, List.of());
     }
 
-}
-class Demo {
-    public static void main(String[] args) {
-        FakeBussAPI api = new FakeBussAPI();
 
-        // én scanner for hele programmet
-        try (Scanner sc = new Scanner(System.in)) {
-
-            // 1) Velg by
-            List<String> byer = new ArrayList<>(api.hentByer());
-            Collections.sort(byer);
-            int byIndex = velgFraListe("Velg by", byer, sc);
-            String valgtBy = byer.get(byIndex);
-
-            // 2) Velg stoppested
-            List<String> stoppesteder = new ArrayList<>(api.hentStederIBy(valgtBy));
-            Collections.sort(stoppesteder);
-            int stoppIndex = velgFraListe("Velg stoppested i " + valgtBy, stoppesteder, sc);
-            String valgtStopp = stoppesteder.get(stoppIndex);
-
-            System.out.println("\nDu valgte: " + valgtBy + " -> " + valgtStopp);
-        }
-    }
-
-    // ⚠️ Ikke lukk Scanner her – den eies av main()
     private static int velgFraListe(String tittel, List<String> alternativer, Scanner sc) {
         while (true) {
             System.out.println("\n" + tittel + ":");
