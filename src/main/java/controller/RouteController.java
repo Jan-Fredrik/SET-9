@@ -1,6 +1,7 @@
 package controller;
 
 import repository.FakeBussAPI;
+import repository.FakeBussData;
 import view.TerminalView;
 import java.util.*;
 
@@ -66,6 +67,40 @@ public class RouteController {
         view.visMelding("Til:");
         view.visMelding(tilBy + " - " + tilStopp);
 
+
+        // //////////////////////////////////////////////////
+        //
+        //  AVGANGER - Det er her avgangene skal filtreres basert på
+        //             hvilke tilgjengeligheter bussene har.
+        //
+
+        RuteLogikkConfig pref = new RuteLogikkConfig("filtrering_innstillinger.properties");
+        pref.loadFrom();
+
+        boolean vilHaHund = Boolean.parseBoolean(pref.getPrefValue("hund", "false"));
+        boolean vilHaRullestol = Boolean.parseBoolean(pref.getPrefValue("rullestol", "false"));
+
+
+        FakeBussData api = new FakeBussData();
+        List<FakeBussAPI> Avganger = api.hentAvganger(fraBy);
+
+        view.visMelding("\n --------------- Avganger -----------------\n");
+        view.visMelding("Her har du filtrete avganger basert på dine preferanser:");
+        view.visMelding("-----------------------------------------------------");
+
+        for (FakeBussAPI avgang : Avganger) {
+            System.out.println(
+                    avgang.getAvgang() +
+                            " | " +
+                            avgang.isHundevennligString() +
+                            " | " +
+                            avgang.isRullestolvennligString()
+            );
+        }
+
+
+
+
         /*
         ///////////////////////////////////////////////////////////////////////////
         Huske liste for meg selv
@@ -90,7 +125,7 @@ public class RouteController {
 
 
 
-    // --- Hjelpemetoder ---
+    // --- Metoder ---
 
     private String velgBy(String tittel, Scanner sc) {
         List<String> byer = new ArrayList<>(api.hentByer());

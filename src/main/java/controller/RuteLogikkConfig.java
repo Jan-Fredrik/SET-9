@@ -31,6 +31,9 @@ public class RuteLogikkConfig {
         }
     }
 
+
+
+
     // Hente verdi med fallback
     public String getPrefValue(String key, String defaultValue) {
         return props.getProperty(key, defaultValue);

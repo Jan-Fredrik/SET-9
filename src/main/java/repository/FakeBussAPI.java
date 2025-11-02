@@ -1,8 +1,30 @@
 package repository;
 
+
 import java.util.*;
 
 public class FakeBussAPI {
+
+    // //////////////////////////////////////
+    // Metoder for et BussDataRepo
+    //
+    private int id = 100;
+    private String avgang;
+    private boolean hundevennlig;
+    private boolean rullestolvennlig;
+
+    // ///////////////////////////////////////
+
+
+    // ////////////////////////////////////////////////////////////////////
+
+    //      Map og Metoder for FRA sted og stopp, og TIL Sted og stopp
+
+    // ////////////////////////////////////////////////////////////////////
+
+    // /////////////////////////////
+    // By og Stopp-liste som hentes ut i reiseVelger()
+    //
     private final Map<String, List<String>> data = Map.of(
             "Halden", List.of(
                     "Halden stasjon",
@@ -55,6 +77,8 @@ public class FakeBussAPI {
                     "Sandbakken")
     );
 
+
+
     public List<String> hentByer() {
         return new ArrayList<>(data.keySet());
     }
@@ -84,9 +108,100 @@ public class FakeBussAPI {
         }
     }
 
+    // ////////////////////////////////////////////////////////////////////
+
+    //               BussDataRepo / RUTE-TABELL
+    //
+    //          Inneholder hvilke "tilgjengeligheter" bussene har
+    //          til en hver tid/avgang. Det er dette som skal filtreres.
+    //          Hver rute/objekt får en rute-ID, bare for simuleringens skyld.
+    //
+    // ////////////////////////////////////////////////////////////////////
 
 
 
+
+
+
+
+    // ///////////////////////////////////////////////////
+    //
+    //             KONSTRUKTØRER
+
+    public FakeBussAPI(String avgang, boolean hundevennlig, boolean rullestolvennlig) {
+        this.id = id++;
+        this.avgang = avgang;
+        this.hundevennlig = hundevennlig;
+        this.rullestolvennlig = rullestolvennlig;
+    }
+
+
+    public FakeBussAPI() {
+    }
+
+
+    /*@Override
+    public String toString() {
+        return ""
+                *//*String.format("ID: %02d | Avgang: %s | Hund: %s | Rullestol: %s",
+                id, avgang,
+                hundevennlig ? "Ja" : "Nei",
+                rullestolvennlig ? "Ja" : "Nei");*//*
+    }
+*/
+
+
+    // ///////////////////////////////////////////////////
+    //
+    //             GETTERE OG SETTERE
+
+    public String getAvgang() {
+        return avgang;
+    }
+
+    public void setAvgang(String avgang) {
+        this.avgang = avgang;
+    }
+
+    public boolean isHundevennlig() {
+        return hundevennlig;
+    }
+
+    public String isHundevennligString() {
+        String hundevennlig;
+        if (this.hundevennlig == true) {
+            hundevennlig = "Hundevennlig";
+            return hundevennlig;
+        }
+        else {
+            hundevennlig = "Ikke hundevennlig";
+            return hundevennlig;
+        }
+    }
+
+    public void setHundevennlig(boolean hundevennlig) {
+        this.hundevennlig = hundevennlig;
+    }
+
+    public boolean isRullestolvennlig() {
+        return rullestolvennlig;
+    }
+
+    public String isRullestolvennligString() {
+        String rullestolvennlig;
+        if (this.rullestolvennlig == true) {
+            rullestolvennlig = "Rullestolvennlig";
+            return rullestolvennlig;
+        }
+        else {
+            rullestolvennlig = "Ikke rullestolvennlig";
+            return rullestolvennlig;
+        }
+    }
+
+    public void setRullestolvennlig(boolean rullestolvennlig) {
+        this.rullestolvennlig = rullestolvennlig;
+    }
 
 
 

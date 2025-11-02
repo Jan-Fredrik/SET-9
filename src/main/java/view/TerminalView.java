@@ -24,6 +24,7 @@ public class TerminalView {
         routeController.velgReise(brukerInput);
     }
 
+    public static void main(String[] args) {}
 
 
 
