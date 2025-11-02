@@ -26,7 +26,8 @@ public class RuteFiltrering {
 
 
     public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolpref) {
-        System.out.println("\n Filtrerte avganger som nøyaktig passer dine preferanser");
+        System.out.println("\n Filtrerte avganger som nøyaktig passer dine preferanser\n");
+        System.out.println("Avganger");
         System.out.println("-----------------------------------------------");
 
         List<FakeBussAPI> bareFiltreteAvganger = new ArrayList<>();
