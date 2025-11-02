@@ -33,11 +33,13 @@ public class RuteFiltrering {
 
         for (FakeBussAPI avgang : avganger) {
             if (hundePref == avgang.isHundevennlig() && rullestolpref == avgang.isRullestolvennlig() ) {
-                bareFiltreteAvganger.add(avgang);
+
+                System.out.println(avgang.getAvgang());
             }
+
+
+
         }
-
-
 
     }
 

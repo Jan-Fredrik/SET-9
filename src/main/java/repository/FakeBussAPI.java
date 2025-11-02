@@ -5,9 +5,7 @@ import java.util.*;
 
 public class FakeBussAPI {
 
-    // //////////////////////////////////////
-    // Metoder for et BussDataRepo
-    //
+
     private int id = 100;
     private String avgang;
     private boolean hundevennlig;

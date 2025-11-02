@@ -88,6 +88,7 @@ public class RouteController {
         view.visMelding("Her har du filtrete avganger basert på dine preferanser:");
         view.visMelding("-----------------------------------------------------");
 
+
         for (FakeBussAPI avgang : Avganger) {
             System.out.println(
                     avgang.getAvgang() +
