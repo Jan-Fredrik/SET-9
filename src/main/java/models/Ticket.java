@@ -1,4 +1,6 @@
 package models;
+import controller.FiltreringInnstillingHandler;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 // Klassen skal opprette objekter av typen billett, og skal holde informasjon om hver enkelt billett som
 // kjøpes gjennom app'en. Kobles til en bruker, må kunne vise hvilken type billett, hvor lenge den er gyldig
@@ -20,7 +23,7 @@ public class Ticket {
     private int orderId;
     private LocalDateTime isValidStart;
     private LocalDateTime isValidEnd;
-    private double price;
+    private double price = 50;
 
     // Attributter JF la til ift. billett-lagring
     private String ticketID;
@@ -32,6 +35,9 @@ public class Ticket {
 
     //attributter for å holde en bruker, kanskje en billettype (Vy, Østfold Kollektiv osv)
     //attributt for om en billett er gyldig, et objekt av Order, holde på rabbatt (student/honnør)
+
+
+
 
 
     // Constructors
@@ -65,9 +71,11 @@ public class Ticket {
 
 
     // Konstruerer Ticket-objekt som skrives rett til fil "local-tickets.txt"
-    public Ticket(String passengerName, String route, double price) {
-        this.orderId = orderId;
-        this.passengerName = passengerName;
+    public Ticket(String route) {
+        Random rand = new Random();
+        int ticketNumber = 100000 + rand.nextInt(900000);
+
+        this.orderId = Integer.parseInt(String.valueOf(ticketNumber));
         this.route = route;
         this.price = price;
         this.purchaseTime = LocalDateTime.now();
@@ -81,12 +89,25 @@ public class Ticket {
     //
 
     private void saveTicketLocally() {
+
+        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
+        pref.loadFrom();
+
+        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
+        boolean erHonnør = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
+
+        double prisJustering = price;
+        if (erStudent==true || erHonnør==true) {
+            prisJustering = price*0.5;
+        }
+
+
+
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
             writer.write("Kjøps-ID: " + ticketID + "\n");    // RANDOM TALL
-            writer.write("Navn: " + passengerName + "\n"); // Brukernavn inntil videre
             writer.write("Rute:" + route + "\n"); // FRAvalgtBY - FRAvalgtSted -> TILvalgtBy - TIlvalgtSTED
-            writer.write("Pris:" + price + "\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
+            writer.write("Pris:" + prisJustering + "\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
             writer.write("Kjøpt:" + purchaseTime.format(FORMATTER) + "\n");
             writer.write("=======================\n");
         } catch (IOException e) {
@@ -114,7 +135,7 @@ public class Ticket {
                     id = line.substring(3).trim();
                 } else if (line.startsWith("Navn:")) {
                     name = line.substring(5).trim();
-                } else if (line.startsWith("Rute:")) {
+                } else if (line.startsWith("Reise:")) {
                     route = line.substring(5).trim();
                 } else if (line.startsWith("Pris:")) {
                     price = Double.parseDouble(line.substring(5).trim());
@@ -145,6 +166,7 @@ public class Ticket {
             System.out.println("nope" + e.getMessage());
         }
     }
+
 
 
 

@@ -1,8 +1,12 @@
 package controller;
 
+import models.Ticket;
 import repository.FakeBussAPI;
 import repository.FakeBussData;
 import view.TerminalView;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 public class RouteController {
@@ -84,37 +88,47 @@ public class RouteController {
         FakeBussData api = new FakeBussData();
         List<FakeBussAPI> Avganger = api.hentAvganger(fraBy);
 
-        view.visMelding("\n --------------- Avganger -----------------\n");
-        view.visMelding("Her har du filtrete avganger basert på dine preferanser:");
-        view.visMelding("-----------------------------------------------------");
+
+        RuteFiltrering filtrering = new RuteFiltrering();
+
+        filtrering.FiltrerAvgangerEtterPreferanser(Avganger);
 
 
-        for (FakeBussAPI avgang : Avganger) {
-            System.out.println(
-                    avgang.getAvgang() +
-                            " | " +
-                            avgang.isHundevennligString() +
-                            " | " +
-                            avgang.isRullestolvennligString()
-            );
+        LocalTime valgtTidspunkt = filtrering.hentØnsketTidspunktFraBruker(Avganger, vilHaHund, vilHaRullestol);
+
+        System.out.println("\n Du valgte tidspunkt: " + valgtTidspunkt + "\n");
+
+        view.visMelding("\n----------------------------------------------------");
+        view.visMelding(" --------- REISEOPPSUMMERING ---------");
+        view.visMelding("Fra: " + fraBy + " - " + fraStopp);
+        view.visMelding("Til:  " + tilBy + " - " + tilStopp);
+        view.visMelding("Avreise ønsket: " + valgtTidspunkt);
+        view.visMelding("----------------------------------------------------");
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("\nVil du bekrefte og kjøpe billett? (j/n): ");
+        String bekreft = sc.nextLine().trim().toLowerCase();
+
+        if (bekreft.equals("j")) {
+            view.visMelding("\n Billetten er kjøpt! God tur!");
+            view.visMelding("\nBilletten din er nå lagret på enheten din!");
+
+        } else {
+            view.visMelding("\nStarter på nytt...\n");
+            velgReise(new Scanner(System.in));
         }
 
+        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
+        boolean erHonnoer = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
+
+        String routeString = fraBy + " - " + fraStopp + " -> " + tilBy + " - " + tilStopp;
+
+
+        Ticket ticket = new Ticket(routeString);
 
 
 
-        /*
-        ///////////////////////////////////////////////////////////////////////////
-        Huske liste for meg selv
-        fraBy
-        fraStopp
-
-        tilBy
-        tilStopp
-
-
-         */
-
-
+        // Etter kjøpt billett, returnerer til hovedmenyen.
 
 
 
@@ -159,3 +173,4 @@ public class RouteController {
         }
     }
 }
+

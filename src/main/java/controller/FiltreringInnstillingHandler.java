@@ -15,7 +15,7 @@ public class FiltreringInnstillingHandler {
     public void loadFrom() {
         try (FileInputStream in = new FileInputStream(fileName)) {
             props.load(in);
-            System.out.println("Preferanser og innstillinger lastet fra " + fileName);
+
         } catch (IOException e) {
             System.out.println("Ingen eksisterende config, starter med tom.");
         }
