@@ -1,8 +1,6 @@
 package models;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.*;
 import java.util.Scanner;
 
 import static models.profil.*;
@@ -16,7 +14,7 @@ public class Innlogging {
     // Metode for å lese innloggingsdata fra bruker
     public String[] hentInnloggingsdata() {
         try (Scanner input = new Scanner(System.in)) {
-            System.out.println("--- INNLOGGING ---");
+            System.out.println("--- INNLOGGING ----");
             System.out.print("E-post: ");
             String epost = input.nextLine().trim();
 
@@ -47,6 +45,7 @@ public class Innlogging {
         String[] data = hentInnloggingsdata();
         if (data == null) {
             System.out.println("Innlogging avbrutt på grunn av manglende data.");
+            System.out.println("egg");
             return;
         }
 
@@ -56,8 +55,9 @@ public class Innlogging {
         if (validerInnlogging(epost, passord)) {
             System.out.println("Innlogging vellykket!");
         } else {
-            System.out.println("Innlogging feilet. Ugyldig e-post eller passord.");
+            System.out.println("Innlogging feilet. Ugyldig e-post eller passord");
         }
+
     }
 
     public static boolean sjekkInnlogging(String epost, String passord) {
