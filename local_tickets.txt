@@ -56,3 +56,10 @@ Rute:Askim - Askim stasjon -> Askim - Askim torv
 Pris:50.0
 Kjøpt:2025-11-03 23:36:18
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute:Askim - Askim torv -> Fredrikstad - Biblioteket
+Pris:50.0
+Kjøpt:2025-11-03 23:43:48
+=======================

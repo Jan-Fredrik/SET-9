@@ -106,9 +106,9 @@ public class Ticket {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
             writer.write("Kjøps-ID: " + ticketID + "\n");    // RANDOM TALL
-            writer.write("Rute:" + route + "\n"); // FRAvalgtBY - FRAvalgtSted -> TILvalgtBy - TIlvalgtSTED
-            writer.write("Pris:" + prisJustering + "\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
-            writer.write("Kjøpt:" + purchaseTime.format(FORMATTER) + "\n");
+            writer.write("Rute: " + route + "\n"); // FRAvalgtBY - FRAvalgtSted -> TILvalgtBy - TIlvalgtSTED
+            writer.write("Pris: " + prisJustering + " kr\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
+            writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n");
             writer.write("=======================\n");
         } catch (IOException e) {
             System.out.println("Kunne ikke lagre billetten lokalt: " + e.getMessage());
@@ -131,15 +131,15 @@ public class Ticket {
 
             while ((line = reader.readLine()) != null) {
 
-                if (line.startsWith("ID:")) {                         // SJEKK BILLETT-KJØP
+                if (line.startsWith("ID: ")) {                         // SJEKK BILLETT-KJØP
                     id = line.substring(3).trim();
-                } else if (line.startsWith("Navn:")) {
+                } else if (line.startsWith("Navn: ")) {
                     name = line.substring(5).trim();
-                } else if (line.startsWith("Reise:")) {
+                } else if (line.startsWith("Reise: ")) {
                     route = line.substring(5).trim();
-                } else if (line.startsWith("Pris:")) {
+                } else if (line.startsWith("Pris: ")) {
                     price = Double.parseDouble(line.substring(5).trim());
-                } else if (line.startsWith("Kjøpt:")) {
+                } else if (line.startsWith("Kjøpt: ")) {
                     time = LocalDateTime.parse(line.substring(6).trim(), FORMATTER);
 
 
