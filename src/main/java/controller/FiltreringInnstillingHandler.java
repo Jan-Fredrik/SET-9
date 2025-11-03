@@ -3,11 +3,11 @@ package controller;
 import java.io.*;
 import java.util.Properties;
 
-public class RuteLogikkConfig {
+public class FiltreringInnstillingHandler {
     private final Properties props = new Properties();
     private final String fileName;
 
-    public RuteLogikkConfig(String fileName) {
+    public FiltreringInnstillingHandler(String fileName) {
         this.fileName = fileName;
     }
 

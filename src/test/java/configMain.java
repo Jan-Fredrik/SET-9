@@ -1,10 +1,10 @@
-import controller.RuteLogikkConfig;
+import controller.FiltreringInnstillingHandler;
 
 public class configMain {
     public static void main(String[] args) {
 
         // Opprette et nytt konfigurasjonsobjekt
-        RuteLogikkConfig config = new RuteLogikkConfig("filtrering_innstillinger.properties");
+        FiltreringInnstillingHandler config = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
 
         // Laste inn eksisterende config (eller starte ny)
         config.loadFrom();

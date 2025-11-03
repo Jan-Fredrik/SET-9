@@ -74,7 +74,7 @@ public class RouteController {
         //             hvilke tilgjengeligheter bussene har.
         //
 
-        RuteLogikkConfig pref = new RuteLogikkConfig("filtrering_innstillinger.properties");
+        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
         pref.loadFrom();
 
         boolean vilHaHund = Boolean.parseBoolean(pref.getPrefValue("hund", "false"));

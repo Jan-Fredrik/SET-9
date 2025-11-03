@@ -81,8 +81,8 @@ public class FakeBussAPI {
         return new ArrayList<>(data.keySet());
     }
 
-    public List<String> hentStederIBy(String city) {
-        return data.getOrDefault(city, List.of());
+    public List<String> hentStederIBy(String by) {
+        return data.getOrDefault(by, List.of());
     }
 
 
