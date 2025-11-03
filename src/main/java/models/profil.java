@@ -49,7 +49,7 @@ public class profil {
 
                 int rows = ps.executeUpdate();
                 if (rows == 0) {
-                    System.out.println("Kunne ikke lagre bruker (ingen rader påvirket).");
+                    System.out.println("Kunne ikke lagre bruker (ingen rader påvirket)");
                     return;
                 }
 
