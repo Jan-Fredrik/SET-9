@@ -65,11 +65,11 @@ public class RuteFiltrering {
                 System.out.println("\n--------------- Filtrert etter preferanser ---------------");
                 visBareFiltrerteAvganger(avganger, hundePref, rullestolPref);
                 System.out.println("----------------------------------------------------------");
-                // Etterpå spør vi igjen om tidspunkt
+
                 continue;
             }
 
-            // Hvis bruker prøver å skrive klokkeslett
+            // Hvis bruker skriver klokkeslett med fallback
             try {
                 valgtTid = LocalTime.parse(input, formatter);
             } catch (DateTimeParseException e) {
