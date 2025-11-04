@@ -22,3 +22,37 @@ Rute:Kristiansund - Halden
 Pris:42000000.0
 Kjøpt:2025-10-22 17:00:36
 =======================
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute:Halden - Halden stasjon -> Fredrikstad - Fredrikstad stasjon
+Pris:50.0
+Kjøpt:2025-11-03 22:57:15
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute:Askim - Askim stasjon -> Askim - Askim stasjon
+Pris:50.0
+Kjøpt:2025-11-03 23:00:24
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute:Askim - Askim stasjon -> Fredrikstad - Biblioteket
+Pris:50.0
+Kjøpt:2025-11-03 23:00:24
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute:Halden - Halden stasjon -> Moss - Jeløya kirke
+Pris:50.0
+Kjøpt:2025-11-03 23:34:28
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute:Askim - Askim stasjon -> Askim - Askim torv
+Pris:50.0
+Kjøpt:2025-11-03 23:36:18
+=======================

@@ -10,7 +10,8 @@ public class RouteChange {
                 "Melding: Din rute er forsinket grunnet høy trafikk.\n Forventet ventetid: 5 minutter",
                 "Melding: Din rute er kansellert",
                 "Melding: Platform endret fra 2B til 6A",
-                "Melding: Ruten du har valgt er utsolgt. Forvent lang ventetid"
+                "Melding: Ruten du har valgt er utsolgt. Forvent lang ventetid",
+                "Melding: Byferge Fredrikstad er ute av drift. Informasjon om erstatnings transport underveis"
         };
         String chosen = events[random.nextInt(events.length)];
         System.out.println("[RouteChange] " + chosen);
