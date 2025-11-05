@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BrukerControllerTest {
     @Test
-    void registrerBruker_og_hentBruker_skal_fungere() throws SQLException {
+    void registrerBruker() throws SQLException {
         BrukerController ctrl = new BrukerController();
 
         String unikEpost = "testuser_" + System.currentTimeMillis() + "@gmail.com";

@@ -11,7 +11,7 @@ public class AppController {
     private final BetalingController betalingCtrl = new BetalingController();
     private Bruker innlogget = null; // null = ingen innlogget
 
-    // ÉN kall-funksjon som starter hele greia
+    // EN kall-funksjon som starter hele greia
     public void run() {
         try {
             while (true) { // hovedløkken

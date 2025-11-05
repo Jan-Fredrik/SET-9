@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BetalingControllerTest {
     @Test
-    void gjennomforKjop_skal_ikke_kaste_feil_for_kunde() throws SQLException {
+    void gjennomforKjop() throws SQLException {
         BrukerController brukerCtrl = new BrukerController();
         BetalingController betalingCtrl = new BetalingController();
 
@@ -21,7 +21,7 @@ public class BetalingControllerTest {
                 epost,
                 "pass123",
                 "kunde",
-                "99998887",
+                "99998832",
                 "1999-09-09"
         );
 
