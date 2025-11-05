@@ -11,7 +11,6 @@ import java.time.LocalDate;
  * - Registrering av nye brukere
  * - Henting av brukerdata fra databasen
  * - Oppdatering av eksisterende brukere
- *
  * Den kobler seg til databasen via Database.getConnection()
  * og bruker PreparedStatement for å unngå SQL-injeksjon.
  */
