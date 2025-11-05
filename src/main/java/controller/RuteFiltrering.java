@@ -30,23 +30,47 @@ public class RuteFiltrering {
     }
 
 
-    public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolpref) {
-        System.out.println("\n Filtrerte avganger som nøyaktig passer dine preferanser\n");
-        System.out.println("Avganger");
+    public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref) {
+        System.out.println("\nFiltrerte avganger som nøyaktig passer dine preferanser\n");
+        System.out.println("Avgang");
         System.out.println("-----------------------------------------------");
 
         List<FakeBussAPI> bareFiltreteAvganger = new ArrayList<>();
 
         for (FakeBussAPI avgang : avganger) {
-            if (hundePref == avgang.isHundevennlig() && rullestolpref == avgang.isRullestolvennlig() ) {
-
+            if (hundePref == avgang.isHundevennlig() && rullestolPref == avgang.isRullestolvennlig()) {
+                bareFiltreteAvganger.add(avgang);
                 System.out.println(avgang.getAvgang());
             }
-
-
-
         }
 
+        // 🟡 Hvis ingen avganger matcher
+        if (bareFiltreteAvganger.isEmpty()) {
+            System.out.println("\nÅnei! Ingen avganger matcher dine preferanser.");
+            System.out.print("Vil du gå ut av billettkjøpet for å endre preferansene dine? (j/n): ");
+
+            Scanner sc = new Scanner(System.in);
+            String svar = sc.nextLine().trim().toLowerCase();
+
+            if (svar.equals("j")) {
+                System.out.println("\nAvbryter billettkjøp slik at du kan oppdatere preferansene dine.");
+                throw new RuntimeException("Avbrutt for å endre preferanser");
+            } else {
+                System.out.println("\nFortsetter med dagens innstillinger...");
+                System.out.println("\nViser alle tilgjengelige avganger igjen:\n");
+                System.out.printf("%-8s | %-18s | %-20s%n", "Avgang", "Hund", "Rullestol");
+                System.out.println("-----------------------------------------------");
+
+                for (FakeBussAPI avgang : avganger) {
+                    System.out.printf(
+                            "%-8s | %-18s | %-20s%n",
+                            avgang.getAvgang(),
+                            avgang.isHundevennligString(),
+                            avgang.isRullestolvennligString()
+                    );
+                }
+            }
+        }
     }
 
     public LocalTime hentØnsketTidspunktFraBruker(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref) {
