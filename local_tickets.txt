@@ -63,3 +63,31 @@ Rute:Askim - Askim torv -> Fredrikstad - Biblioteket
 Pris:50.0
 Kjøpt:2025-11-03 23:43:48
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute: Halden - Halden stasjon -> Oslo - Karl Johans gate
+Pris: 50.0 kr
+Kjøpt: 2025-11-04 14:47:05
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute: Fredrikstad - Fredrikstad stasjon -> Fredrikstad - Fredrikstad stasjon
+Pris: 50.0 kr
+Kjøpt: 2025-11-04 15:46:25
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute: Askim - Askim stasjon -> Askim - Askim stasjon
+Pris: 50.0 kr
+Kjøpt: 2025-11-04 15:46:25
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: null
+Rute: Fredrikstad - Fredrikstad stasjon -> Askim - Askim stasjon
+Pris: 50.0 kr
+Kjøpt: 2025-11-05 10:37:55
+=======================
