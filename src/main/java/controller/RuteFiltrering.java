@@ -46,14 +46,14 @@ public class RuteFiltrering {
 
         // 🟡 Hvis ingen avganger matcher
         if (bareFiltreteAvganger.isEmpty()) {
-            System.out.println("\n⚠️  Ingen avganger matcher dine preferanser.");
+            System.out.println("\nÅnei! Ingen avganger matcher dine preferanser.");
             System.out.print("Vil du gå ut av billettkjøpet for å endre preferansene dine? (j/n): ");
 
             Scanner sc = new Scanner(System.in);
             String svar = sc.nextLine().trim().toLowerCase();
 
             if (svar.equals("j")) {
-                System.out.println("\n💡 Avbryter billettkjøp slik at du kan oppdatere preferansene dine.");
+                System.out.println("\nAvbryter billettkjøp slik at du kan oppdatere preferansene dine.");
                 throw new RuntimeException("Avbrutt for å endre preferanser");
             } else {
                 System.out.println("\nFortsetter med dagens innstillinger...");
