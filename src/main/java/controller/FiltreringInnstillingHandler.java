@@ -13,11 +13,28 @@ public class FiltreringInnstillingHandler {
 
     // Lese fra fil
     public void loadFrom() {
-        try (FileInputStream in = new FileInputStream(fileName)) {
-            props.load(in);
+        File file = new File(fileName);
+        if (!file.exists()) {
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("Opprettet ny preferansefil: " + fileName);
 
-        } catch (IOException e) {
-            System.out.println("Ingen eksisterende config/preferanse-fil, starter med tom.");
+                    // Oppretter standardverdie hvis ikke fila er der og en ny må opprette
+                    setPrefValue("hund", String.valueOf(false));
+                    setPrefValue("rullestol", String.valueOf(false));
+                    setPrefValue("student", String.valueOf(false));
+                    setPrefValue("honnør", String.valueOf(false));
+                    saveTo(); // lagrer tomt sett med defaults
+                }
+            } catch (IOException e) {
+                System.out.println("Kunne ikke opprette ny fil: " + e.getMessage());
+            }
+        } else {
+            try (FileInputStream in = new FileInputStream(file)) {
+                props.load(in);
+            } catch (IOException e) {
+                System.out.println("Feil ved lasting av preferansefil: " + e.getMessage());
+            }
         }
     }
 

@@ -1,21 +1,7 @@
 
 ==== BUSS BILLETT ====
 Kjøps-ID: null
-Rute: Askim - Askim stasjon -> Moss - Nøkkeland skole
-Pris: 50.0 kr
-Kjøpt: 2025-11-06 17:25:41
-=======================
-
-==== BUSS BILLETT ====
-Kjøps-ID: null
 Rute: Fredrikstad - Fredrikstad stasjon -> Fredrikstad - Fredrikstad stasjon
-Pris: 25.0 kr
-Kjøpt: 2025-11-06 17:29:00
-=======================
-
-==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute: Askim - Askim stasjon -> Fredrikstad - Fredrikstad stasjon
-Pris: 25.0 kr
-Kjøpt: 2025-11-06 17:29:00
+Pris: 50.0 kr
+Kjøpt: 2025-11-06 20:42:01
 =======================
