@@ -138,16 +138,6 @@ public class FakeBussAPI {
     }
 
 
-    /*@Override
-    public String toString() {
-        return ""
-                *//*String.format("ID: %02d | Avgang: %s | Hund: %s | Rullestol: %s",
-                id, avgang,
-                hundevennlig ? "Ja" : "Nei",
-                rullestolvennlig ? "Ja" : "Nei");*//*
-    }
-*/
-
 
     // ///////////////////////////////////////////////////
     //
