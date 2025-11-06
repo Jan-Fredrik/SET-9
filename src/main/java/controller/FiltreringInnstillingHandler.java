@@ -17,7 +17,7 @@ public class FiltreringInnstillingHandler {
             props.load(in);
 
         } catch (IOException e) {
-            System.out.println("Ingen eksisterende config, starter med tom.");
+            System.out.println("Ingen eksisterende config/preferanse-fil, starter med tom.");
         }
     }
 

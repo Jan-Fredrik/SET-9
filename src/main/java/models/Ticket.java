@@ -99,6 +99,7 @@ public class Ticket {
         double prisJustering = price;
         if (erStudent==true || erHonnør==true) {
             prisJustering = price*0.5;
+            setPrice(prisJustering);
         }
 
 
