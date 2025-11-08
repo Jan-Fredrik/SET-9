@@ -26,7 +26,7 @@ public class Ticket {
     private double price = 50;
 
     // Attributter JF la til ift. billett-lagring
-    private String ticketID;
+    private String ticketID ;
     private String passengerName;
     private String route;
     private LocalDateTime purchaseTime;
@@ -73,7 +73,7 @@ public class Ticket {
     // Konstruerer Ticket-objekt som skrives rett til fil "local-tickets.txt"
     public Ticket(String route) {
         Random rand = new Random();
-        int ticketNumber = 100000 + rand.nextInt(900000);
+        int ticketNumber = 10000 + rand.nextInt(90000);
 
         this.orderId = Integer.parseInt(String.valueOf(ticketNumber));
         this.route = route;
@@ -106,7 +106,7 @@ public class Ticket {
 
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
-            writer.write("Kjøps-ID: " + ticketID + "\n");    // RANDOM TALL
+            writer.write("Kjøps-ID: " + orderId + "\n");    // RANDOM TALL
             writer.write("Rute: " + route + "\n"); // FRAvalgtBY - FRAvalgtSted -> TILvalgtBy - TIlvalgtSTED
             writer.write("Pris: " + prisJustering + " kr\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
             writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n");

@@ -87,6 +87,9 @@ public class RouteController {
 
         boolean vilHaHund = Boolean.parseBoolean(pref.getPrefValue("hund", "false"));
         boolean vilHaRullestol = Boolean.parseBoolean(pref.getPrefValue("rullestol", "false"));
+        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
+        boolean erHonnoer = Boolean.parseBoolean(pref.getPrefValue("honner", "false"));
+
 
 
         FakeBussData apiData = new FakeBussData();
@@ -122,21 +125,11 @@ public class RouteController {
             kjør = false;
 
         } else {
-            view.visMelding("\nStarter på nytt...\n");
+            view.visMelding("\nAvslutter...\n");
             kjør = false;
-            // velgReise(new Scanner(System.in));
+
         }
 
-        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
-        boolean erHonnoer = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
-
-        // String routeString = fraBy + " - " + fraStopp + " -> " + tilBy + " - " + tilStopp;
-
-
-        // Ticket ticket = new Ticket(routeString);
-
-
-        // Etter kjøpt billett, returnerer til hovedmenyen.
 
 
     }

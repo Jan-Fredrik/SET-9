@@ -23,7 +23,7 @@ public class FiltreringInnstillingHandler {
                     setPrefValue("hund", String.valueOf(false));
                     setPrefValue("rullestol", String.valueOf(false));
                     setPrefValue("student", String.valueOf(false));
-                    setPrefValue("honnør", String.valueOf(false));
+                    setPrefValue("honner", String.valueOf(false));
                     saveTo(); // lagrer tomt sett med defaults
                 }
             } catch (IOException e) {

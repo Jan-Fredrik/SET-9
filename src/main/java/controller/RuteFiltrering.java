@@ -49,8 +49,7 @@ public class RuteFiltrering {
             System.out.println("\nÅnei! Ingen avganger matcher dine preferanser.");
             System.out.print("Vil du gå ut av billettkjøpet for å endre preferansene dine? (j/n): ");
 
-            Scanner sc = new Scanner(System.in);
-            String svar = sc.nextLine().trim().toLowerCase();
+            String svar = brukerInput.nextLine().trim().toLowerCase();
 
             if (svar.equals("j")) {
                 System.out.println("\nAvbryter billettkjøp slik at du kan oppdatere preferansene dine.");
