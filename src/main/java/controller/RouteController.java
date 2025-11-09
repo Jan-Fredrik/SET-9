@@ -3,7 +3,7 @@ package controller;
 import models.Ticket;
 import repository.FakeBussAPI;
 import repository.FakeBussData;
-import view.TerminalView;
+import view.KonsollView;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -12,9 +12,9 @@ import java.util.*;
 public class RouteController {
 
     private final FakeBussAPI api;
-    private final TerminalView view;
+    private final KonsollView view;
 
-    public RouteController(FakeBussAPI api, TerminalView view) {
+    public RouteController(FakeBussAPI api, KonsollView view) {
         this.api = api;
         this.view = view;
     }

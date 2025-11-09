@@ -1,6 +1,9 @@
 package controller;
 
 import models.*;
+import repository.FakeBussAPI;
+import view.KonsollView;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -10,6 +13,8 @@ public class AppController {
     private final BrukerController brukerCtrl = new BrukerController();
     private final BetalingController betalingCtrl = new BetalingController();
     private Bruker innlogget = null; // null = ingen innlogget
+    private final RouteController routeCtrl = new RouteController(new FakeBussAPI(), new KonsollView());
+
 
     // EN kall-funksjon som starter hele greia
     public void run() {
@@ -58,27 +63,31 @@ public class AppController {
 
     private void visBrukermeny() throws SQLException {
         System.out.println("\n--- Brukermeny (" + innlogget.getNavn() + " - " + innlogget.getRolle() + ") ---");
-        System.out.println("1) Se egen profil");
-        System.out.println("2) Endre egen profil");
-        if (innlogget.getRolle().equalsIgnoreCase("kunde"))
-            System.out.println("3) Kjøp billett (simulert)");
-        System.out.println("9) Logg ut");
-        System.out.print("Velg: ");
-        String v = sc.nextLine().trim();
 
-        switch (v) {
+        // Menyvalg i ny rekkefølge
+        if (innlogget.getRolle().equalsIgnoreCase("kunde")) {
+            System.out.println("1) Kjøp billett");
+        }
+        System.out.println("2) Se egen profil");
+        System.out.println("3) Endre egen profil");
+        System.out.println("9) Logg ut");
+
+        System.out.print("Velg: ");
+        String valg = sc.nextLine().trim();
+
+        switch (valg) {
             case "1":
-                visProfil();
-                break;
-            case "2":
-                endreProfilFlow();
-                break;
-            case "3":
                 if (innlogget.getRolle().equalsIgnoreCase("kunde")) {
-                    betalingCtrl.gjennomforKjop(innlogget);
+                    routeCtrl.velgReise(sc);
                 } else {
                     System.out.println("Ikke tilgjengelig for din rolle.");
                 }
+                break;
+            case "2":
+                visProfil();
+                break;
+            case "3":
+                endreProfilFlow();
                 break;
             case "9":
                 innlogget = null;
@@ -88,12 +97,14 @@ public class AppController {
                 System.out.println("Ugyldig valg.");
         }
     }
-
     // =====================
     //   FLOW-METODER
     // =====================
 
     private void registrerBrukerFlow() throws SQLException {
+
+
+
         System.out.print("Navn: ");
         String navn = sc.nextLine();
 
@@ -121,6 +132,26 @@ public class AppController {
             System.out.println("Ugyldig datoformat. Bruk YYYY-MM-DD.");
             return;
         }
+
+
+        // JF's preferanse-endring
+        // ------------------------------------------------------
+        //          -- SETTING AV PREFERANSER --
+        // Setter preferanser bare hvis "rollen" er satt som kunde.
+        // Man kan sette/endre preferanser i hovedmenyen også.
+
+        if (rolle.equalsIgnoreCase("kunde")) {
+
+            // Hvis "ja", bli det "true" i pref-fila
+            // "nei", eller hva som helst annet blir "false"
+            System.out.println("--- Sett dine preferanser ---");
+            FiltreringInnstillingHandler prefHandler = new FiltreringInnstillingHandler("preferanser.properties");
+            prefHandler.endrePreferanser();
+
+
+        }
+
+
 
         // Registrerer ny bruker gjennom kontrolleren
         Bruker ny = brukerCtrl.registrerBruker(navn, epost, pass, rolle, telefon, fodselsdato);
@@ -186,6 +217,8 @@ public class AppController {
             return;
         }
 
+        System.out.println("");
+
         // Oppdaterer brukerens informasjon gjennom kontrolleren
         boolean ok = brukerCtrl.oppdaterBruker(
                 innlogget,
@@ -204,5 +237,21 @@ public class AppController {
         } else {
             System.out.println("Kunne ikke oppdatere profil.");
         }
+
+        // ---------------------------
+        // Tillegg: Endre preferanser
+        //
+
+        System.out.print("Vil du endre dine preferanser også? (ja/nei): ");
+        String svar = sc.nextLine().trim().toLowerCase();
+
+        if (svar.equals("ja")) {
+            FiltreringInnstillingHandler prefHandler = new FiltreringInnstillingHandler("preferanser.properties");
+            prefHandler.endrePreferanser(); // note to selv, load og save i metodn
+        } else {
+            System.out.println("Preferansene ble ikke endret.\n");
+        }
+
+
     }
 }

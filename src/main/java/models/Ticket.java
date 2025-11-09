@@ -109,7 +109,7 @@ public class Ticket {
             writer.write("Kjøps-ID: " + orderId + "\n");    // RANDOM TALL
             writer.write("Rute: " + route + "\n"); // FRAvalgtBY - FRAvalgtSted -> TILvalgtBy - TIlvalgtSTED
             writer.write("Pris: " + prisJustering + " kr\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
-            writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n");
+            writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n"); // Kjøpstidspunkt
             writer.write("=======================\n");
         } catch (IOException e) {
             System.out.println("Kunne ikke lagre billetten lokalt: " + e.getMessage());
