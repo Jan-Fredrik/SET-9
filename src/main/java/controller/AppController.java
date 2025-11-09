@@ -90,6 +90,15 @@ public class AppController {
             case "3":
                 endreProfilFlow();
                 break;
+            case "4":
+                if (innlogget.getRolle().equalsIgnoreCase("kunde")) {
+                    System.out.println("\n--- Endre preferanser ---\n");
+                    FiltreringInnstillingHandler prefHandler = new FiltreringInnstillingHandler("preferanser.properties");
+                    prefHandler.endrePreferanser();
+                } else {
+                    System.out.println("Bare kunder kan endre preferanser.");
+                }
+                break;
             case "9":
                 innlogget = null;
                 System.out.println("Logget ut.");
