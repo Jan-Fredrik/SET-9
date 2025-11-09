@@ -1,43 +1,28 @@
 
-
-==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute:Askim - Askim stasjon -> Askim - Askim torv
-Pris:50.0
-Kjøpt:2025-11-03 23:36:18
-=======================
-
-==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute:Askim - Askim torv -> Fredrikstad - Biblioteket
-Pris:50.0
-Kjøpt:2025-11-03 23:43:48
-=======================
-
-==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute: Halden - Halden stasjon -> Oslo - Karl Johans gate
-Pris: 50.0 kr
-Kjøpt: 2025-11-04 14:47:05
-=======================
-
 ==== BUSS BILLETT ====
 Kjøps-ID: null
 Rute: Fredrikstad - Fredrikstad stasjon -> Fredrikstad - Fredrikstad stasjon
 Pris: 50.0 kr
-Kjøpt: 2025-11-04 15:46:25
+Kjøpt: 2025-11-06 20:42:01
 =======================
 
 ==== BUSS BILLETT ====
 Kjøps-ID: null
+Rute: Fredrikstad - Biblioteket -> Moss - Moss stasjon
+Pris: 50.0 kr
+Kjøpt: 2025-11-07 18:19:14
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 95993
 Rute: Askim - Askim stasjon -> Askim - Askim stasjon
 Pris: 50.0 kr
-Kjøpt: 2025-11-04 15:46:25
+Kjøpt: 2025-11-07 18:27:40
 =======================
 
 ==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute: Fredrikstad - Fredrikstad stasjon -> Askim - Askim stasjon
+Kjøps-ID: 21148
+Rute: Halden - Busterudparken -> Fredrikstad - Biblioteket
 Pris: 50.0 kr
-Kjøpt: 2025-11-05 10:37:55
+Kjøpt: 2025-11-07 19:58:47
 =======================

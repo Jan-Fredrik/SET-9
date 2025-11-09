@@ -30,7 +30,7 @@ public class RuteFiltrering {
     }
 
 
-    public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref) {
+    public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
         System.out.println("\nFiltrerte avganger som nøyaktig passer dine preferanser\n");
         System.out.println("Avgang");
         System.out.println("-----------------------------------------------");
@@ -44,13 +44,12 @@ public class RuteFiltrering {
             }
         }
 
-        // 🟡 Hvis ingen avganger matcher
+        // Hvis ingen avganger matcher
         if (bareFiltreteAvganger.isEmpty()) {
             System.out.println("\nÅnei! Ingen avganger matcher dine preferanser.");
             System.out.print("Vil du gå ut av billettkjøpet for å endre preferansene dine? (j/n): ");
 
-            Scanner sc = new Scanner(System.in);
-            String svar = sc.nextLine().trim().toLowerCase();
+            String svar = brukerInput.nextLine().trim().toLowerCase();
 
             if (svar.equals("j")) {
                 System.out.println("\nAvbryter billettkjøp slik at du kan oppdatere preferansene dine.");
@@ -73,21 +72,21 @@ public class RuteFiltrering {
         }
     }
 
-    public LocalTime hentØnsketTidspunktFraBruker(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref) {
+    public LocalTime hentØnsketTidspunktFraBruker(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
 
-        Scanner sc = new Scanner(System.in);
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime valgtTid = null;
 
         while (valgtTid == null) {
             System.out.print("\nSkriv inn tidspunktet du ønsker å reise (HH:mm), ");
             System.out.print("eller skriv \"filtrer\" for å se ruter som spesifikt passer for deg: ");
-            String input = sc.nextLine().trim().toLowerCase();
+            String input = brukerInput.nextLine().trim().toLowerCase();
 
             // Hvis bruker skriver "filtrer" -> vis preferansebaserte avganger
             if (input.equals("filtrer")) {
                 System.out.println("\n--------------- Filtrert etter preferanser ---------------");
-                visBareFiltrerteAvganger(avganger, hundePref, rullestolPref);
+                visBareFiltrerteAvganger(avganger, hundePref, rullestolPref, brukerInput);
                 System.out.println("----------------------------------------------------------");
 
                 continue;

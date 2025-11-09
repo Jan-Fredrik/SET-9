@@ -13,6 +13,7 @@ public class configMain {
         config.setPrefValue("language", "no");
         config.setPrefValue("font.size", "14");
 
+
         // Lese verdier (med fallback dersom nøkkelen ikke finnes)
         String lang = config.getPrefValue("language", "ukjent");
         String font = config.getPrefValue("font.size", "12");
