@@ -70,6 +70,7 @@ public class AppController {
         }
         System.out.println("2) Se egen profil");
         System.out.println("3) Endre egen profil");
+        System.out.println("4) Endre preferanser");
         System.out.println("9) Logg ut");
 
         System.out.print("Velg: ");
