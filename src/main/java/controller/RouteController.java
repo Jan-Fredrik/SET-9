@@ -103,6 +103,10 @@ public class RouteController {
 
         LocalTime valgtTidspunkt = filtrering.hentØnsketTidspunktFraBruker(Avganger, vilHaHund, vilHaRullestol, brukerInput);
 
+            if (valgtTidspunkt == null) {
+                return; // tilbake til brukermeny'n
+            }
+
         System.out.println("\n Du valgte tidspunkt: " + valgtTidspunkt + "\n");
 
         view.visMelding("\n----------------------------------------------------");
@@ -126,7 +130,7 @@ public class RouteController {
 
         } else {
             view.visMelding("\nAvslutter...\n");
-            kjør = false;
+            return;
 
         }
 

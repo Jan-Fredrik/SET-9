@@ -30,7 +30,7 @@ public class RuteFiltrering {
     }
 
 
-    public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
+    public boolean visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
         System.out.println("\nFiltrerte avganger som nøyaktig passer dine preferanser\n");
         System.out.println("Avgang");
         System.out.println("-----------------------------------------------");
@@ -44,7 +44,7 @@ public class RuteFiltrering {
             }
         }
 
-        // Hvis ingen avganger matcher
+        // Hvis ingen avganger matcher preferansene
         if (bareFiltreteAvganger.isEmpty()) {
             System.out.println("\nÅnei! Ingen avganger matcher dine preferanser.");
             System.out.print("Vil du gå ut av billettkjøpet for å endre preferansene dine? (j/n): ");
@@ -53,7 +53,7 @@ public class RuteFiltrering {
 
             if (svar.equals("j")) {
                 System.out.println("\nAvbryter billettkjøp slik at du kan oppdatere preferansene dine.");
-                throw new RuntimeException("Avbrutt for å endre preferanser");
+                return true; // signaliserer at brukeren avbrøt
             } else {
                 System.out.println("\nFortsetter med dagens innstillinger...");
                 System.out.println("\nViser alle tilgjengelige avganger igjen:\n");
@@ -70,10 +70,12 @@ public class RuteFiltrering {
                 }
             }
         }
+
+        return false;
     }
 
-    public LocalTime hentØnsketTidspunktFraBruker(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
 
+    public LocalTime hentØnsketTidspunktFraBruker(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime valgtTid = null;
@@ -86,13 +88,17 @@ public class RuteFiltrering {
             // Hvis bruker skriver "filtrer" -> vis preferansebaserte avganger
             if (input.equals("filtrer")) {
                 System.out.println("\n--------------- Filtrert etter preferanser ---------------");
-                visBareFiltrerteAvganger(avganger, hundePref, rullestolPref, brukerInput);
+                boolean avbrutt = visBareFiltrerteAvganger(avganger, hundePref, rullestolPref, brukerInput);
                 System.out.println("----------------------------------------------------------");
+
+                if (avbrutt) {
+                    return null; // signal til RouteController den blir avbrutt, ellers kræsjer ting
+                }
 
                 continue;
             }
 
-            // Hvis bruker skriver klokkeslett med fallback
+            // Hvis bruker skriver klokkeslett
             try {
                 valgtTid = LocalTime.parse(input, formatter);
             } catch (DateTimeParseException e) {
@@ -102,6 +108,7 @@ public class RuteFiltrering {
 
         return valgtTid;
     }
+
 
 
 
