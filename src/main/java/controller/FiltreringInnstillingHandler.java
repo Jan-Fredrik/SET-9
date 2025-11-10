@@ -2,6 +2,7 @@ package controller;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class FiltreringInnstillingHandler {
     private final Properties props = new Properties();
@@ -46,6 +47,32 @@ public class FiltreringInnstillingHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void endrePreferanser() {
+
+        loadFrom();
+        Scanner brukerInput = new Scanner(System.in);
+
+
+        System.out.print("Har du hund? (ja/nei): ");
+        String hund = brukerInput.nextLine().trim().toLowerCase();
+        setPrefValue("hund", String.valueOf(hund.equals("ja")));
+
+        System.out.print("Trenger du rullestoltilgang? (ja/nei): ");
+        String rullestol = brukerInput.nextLine().trim().toLowerCase();
+        setPrefValue("rullestol", String.valueOf(rullestol.equals("ja")));
+
+        System.out.print("Er du student? (ja/nei): ");
+        String student = brukerInput.nextLine().trim().toLowerCase();
+        setPrefValue("student", String.valueOf(student.equals("ja")));
+
+        System.out.print("Har du honnørkort? (ja/nei): ");
+        String honnor = brukerInput.nextLine().trim().toLowerCase();
+        setPrefValue("honner", String.valueOf(honnor.equals("ja")));
+
+        saveTo();
+        System.out.println("Preferanser oppdatert og lagret.");
     }
 
 

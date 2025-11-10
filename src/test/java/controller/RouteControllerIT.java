@@ -2,6 +2,7 @@ package controller;
 
 import org.junit.jupiter.api.*;
 import repository.FakeBussAPI;
+import view.KonsollView;
 import view.TerminalView;
 
 import java.io.ByteArrayInputStream;
@@ -16,7 +17,7 @@ class RouteControllerIntegrationIT {
     private static final String PREF_FILE = "filtrering_innstillinger.properties";
     private static final String LOCAL_TICKET_FILE = "local_tickets.txt";
 
-    private TerminalView mockView;
+    private KonsollView mockView;
     private FakeBussAPI fakeApi;
     private RouteController controller;
 
@@ -26,7 +27,7 @@ class RouteControllerIntegrationIT {
         Files.deleteIfExists(new File(PREF_FILE).toPath());
         Files.deleteIfExists(new File(LOCAL_TICKET_FILE).toPath());
 
-        mockView = new TerminalView() {
+        mockView = new KonsollView() {
             @Override
             public void visMelding(String melding) {
                 // Du kan logge til konsoll her hvis du vil

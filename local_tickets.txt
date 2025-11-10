@@ -26,3 +26,10 @@ Rute: Halden - Busterudparken -> Fredrikstad - Biblioteket
 Pris: 50.0 kr
 Kjøpt: 2025-11-07 19:58:47
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 87397
+Rute: Halden - Tistedal -> Oslo - Aker Brygge
+Pris: 50.0 kr
+Kjøpt: 2025-11-09 14:49:02
+=======================
