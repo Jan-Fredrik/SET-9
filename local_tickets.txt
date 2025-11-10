@@ -1,35 +1,49 @@
 
 ==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute: Fredrikstad - Fredrikstad stasjon -> Fredrikstad - Fredrikstad stasjon
+Kjøps-ID: 91568
+Reise: Fredrikstad - Fredrikstad stasjon -> Fredrikstad - Fredrikstad stasjon
 Pris: 50.0 kr
-Kjøpt: 2025-11-06 20:42:01
+Kjøpt: 2025-11-10 19:46:02
 =======================
 
 ==== BUSS BILLETT ====
-Kjøps-ID: null
-Rute: Fredrikstad - Biblioteket -> Moss - Moss stasjon
+Kjøps-ID: 53136
+Reise: Moss - Moss stasjon -> Fredrikstad - Biblioteket
 Pris: 50.0 kr
-Kjøpt: 2025-11-07 18:19:14
+Kjøpt: 2025-11-10 19:52:05
 =======================
 
 ==== BUSS BILLETT ====
-Kjøps-ID: 95993
-Rute: Askim - Askim stasjon -> Askim - Askim stasjon
+Kjøps-ID: 62005
+Reise: Askim - Askim stasjon -> Askim - Askim stasjon
 Pris: 50.0 kr
-Kjøpt: 2025-11-07 18:27:40
+Kjøpt: 2025-11-10 20:00:47
 =======================
 
 ==== BUSS BILLETT ====
-Kjøps-ID: 21148
-Rute: Halden - Busterudparken -> Fredrikstad - Biblioteket
+Kjøps-ID: 17317
+Reise: Oslo - Oslo S -> Sarpsborg - Sarpsborg bussterminal
 Pris: 50.0 kr
-Kjøpt: 2025-11-07 19:58:47
+Kjøpt: 2025-11-10 20:06:35
 =======================
 
 ==== BUSS BILLETT ====
-Kjøps-ID: 87397
-Rute: Halden - Tistedal -> Oslo - Aker Brygge
+Kjøps-ID: 43943
+Reise: Fredrikstad - Biblioteket -> Moss - Moss stasjon
 Pris: 50.0 kr
-Kjøpt: 2025-11-09 14:49:02
+Kjøpt: 2025-11-10 20:09:14
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 69820
+Reise: Moss - Moss stasjon -> Sarpsborg - Tune kirke
+Pris: 50.0 kr
+Kjøpt: 2025-11-10 20:12:29
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 24372
+Reise: Moss - Moss stasjon -> Moss - Melløs stadion
+Pris: 25.0 kr
+Kjøpt: 2025-11-10 20:17:36
 =======================

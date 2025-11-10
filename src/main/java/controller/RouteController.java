@@ -82,7 +82,7 @@ public class RouteController {
         //             hvilke tilgjengeligheter bussene har.
         //
 
-        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
+        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("preferanser.properties");
         pref.loadFrom();
 
         boolean vilHaHund = Boolean.parseBoolean(pref.getPrefValue("hund", "false"));

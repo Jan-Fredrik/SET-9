@@ -19,7 +19,7 @@ public class Ticket {
     private int orderId;
     private LocalDateTime isValidStart;
     private LocalDateTime isValidEnd;
-    private double price = 50;
+    private double price;
 
     private String ticketID;
     private String route;
@@ -59,9 +59,19 @@ public class Ticket {
         Random rand = new Random();
         int ticketNumber = 10000 + rand.nextInt(90000);
 
+        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("preferanser.properties");
+        pref.loadFrom();
+
+        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
+        boolean erHonner = Boolean.parseBoolean(pref.getPrefValue("honner", "false"));
+
+
+
         this.orderId = ticketNumber;
         this.route = route;
-        this.price = price;
+
+        this.price = (erStudent || erHonner) ? 25 : 50;
+
         this.purchaseTime = LocalDateTime.now();
 
         saveTicketLocally();
@@ -70,23 +80,18 @@ public class Ticket {
     // ---------- METODER ----------
 
     private void saveTicketLocally() {
-        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
-        pref.loadFrom();
+//        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
+//        pref.loadFrom();
+//
+//        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
+//        boolean erHonnør = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
 
-        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
-        boolean erHonnør = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
-
-        double prisJustering = price;
-        if (erStudent || erHonnør) {
-            prisJustering = price * 0.5;
-            setPrice(prisJustering);
-        }
 
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
             writer.write("Kjøps-ID: " + orderId + "\n");
             writer.write("Reise: " + route + "\n");
-            writer.write("Pris: " + prisJustering + " kr\n");
+            writer.write("Pris: " + price + " kr\n");
             writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n");
             writer.write("=======================\n");
         } catch (IOException e) {
@@ -106,8 +111,8 @@ public class Ticket {
             while ((line = reader.readLine()) != null) {
                 if (line.startsWith("Kjøps-ID: ")) {
                     id = line.substring(9).trim();
-                } else if (line.startsWith("Rute: ")) {
-                    route = line.substring(6).trim();
+                } else if (line.startsWith("Reise: ")) {
+                    route = line.substring(7).trim();
                 } else if (line.startsWith("Pris: ")) {
                     String prisTekst = line.substring(6).replace(" kr", "").trim();
                     price = Double.parseDouble(prisTekst);
