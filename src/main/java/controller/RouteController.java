@@ -118,6 +118,7 @@ public class RouteController {
 
         String rabattOppsum = "";
         int prisOppsummering = 0;
+
         if (erHonnoer==true) {
             prisOppsummering = 25;
             rabattOppsum = "(Honnør-rabatt)";
