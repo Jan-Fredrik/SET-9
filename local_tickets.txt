@@ -47,3 +47,9 @@ Reise: Moss - Moss stasjon -> Moss - Melløs stadion
 Pris: 25.0 kr
 Kjøpt: 2025-11-10 20:17:36
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 37724
+Reise: Halden - Torget -> Sarpsborg - Sarpsborg bussterminal
+Kjøpt: 2025-11-10 22:07:12
+=======================

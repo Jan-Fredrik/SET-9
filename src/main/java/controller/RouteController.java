@@ -109,11 +109,36 @@ public class RouteController {
 
         System.out.println("\n Du valgte tidspunkt: " + valgtTidspunkt + "\n");
 
-        view.visMelding("\n----------------------------------------------------");
+        String billettType;
+        if ( enkeltBillett==true ) {           // Hvis ikke enkel-billett, så er det en periode-billett vice versa
+            billettType = "Enkelbillett";
+        } else {
+            billettType = "Periodebillett";
+        }
+
+        String rabattOppsum = "";
+        int prisOppsummering = 0;
+        if (erHonnoer==true) {
+            prisOppsummering = 25;
+            rabattOppsum = "(Honnør-rabatt)";
+        } else if (erStudent == true) {
+            prisOppsummering = 25;
+            rabattOppsum = "(Student-rabatt)";
+        }
+
+        if (periodeBillett==true) {
+            prisOppsummering = 0;
+            rabattOppsum = "(Periodebillett, allerede betalt)";
+        }
+
+        view.visMelding("\n-------------------------------------");
         view.visMelding(" --------- REISEOPPSUMMERING ---------");
+
+        view.visMelding("Billett-type: " + billettType );
         view.visMelding("Fra: " + fraBy + " - " + fraStopp);
         view.visMelding("Til:  " + tilBy + " - " + tilStopp);
         view.visMelding("Avreise ønsket: " + valgtTidspunkt);
+        view.visMelding("Pris: " + prisOppsummering + " kr " + rabattOppsum);
         view.visMelding("----------------------------------------------------");
 
 

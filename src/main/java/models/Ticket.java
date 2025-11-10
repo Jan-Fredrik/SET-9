@@ -71,7 +71,6 @@ public class Ticket {
         this.route = route;
 
         this.price = (erStudent || erHonner) ? 25 : 50;
-
         this.purchaseTime = LocalDateTime.now();
 
         saveTicketLocally();
@@ -80,18 +79,10 @@ public class Ticket {
     // ---------- METODER ----------
 
     private void saveTicketLocally() {
-//        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
-//        pref.loadFrom();
-//
-//        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
-//        boolean erHonnør = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
-
-
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
             writer.write("Kjøps-ID: " + orderId + "\n");
             writer.write("Reise: " + route + "\n");
-            writer.write("Pris: " + price + " kr\n");
             writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n");
             writer.write("=======================\n");
         } catch (IOException e) {
@@ -105,7 +96,6 @@ public class Ticket {
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
             String id = null, route = null;
-            double price = 0;
             LocalDateTime time = null;
 
             while ((line = reader.readLine()) != null) {
@@ -113,14 +103,11 @@ public class Ticket {
                     id = line.substring(9).trim();
                 } else if (line.startsWith("Reise: ")) {
                     route = line.substring(7).trim();
-                } else if (line.startsWith("Pris: ")) {
-                    String prisTekst = line.substring(6).replace(" kr", "").trim();
-                    price = Double.parseDouble(prisTekst);
                 } else if (line.startsWith("Kjøpt: ")) {
                     time = LocalDateTime.parse(line.substring(7).trim(), FORMATTER);
 
                     if (time.toLocalDate().equals(date)) {
-                        tickets.add(new Ticket(id, route, price, time));
+                        tickets.add(new Ticket(id, route, 0, time)); // pris = 0, fordi vi ikke viser det
                     }
                 }
             }
@@ -145,7 +132,6 @@ public class Ticket {
         return "\n==== BUSS BILLETT ====\n" +
                 "Kjøps-ID: " + ticketID + "\n" +
                 "Reise: " + route + "\n" +
-                "Pris: " + price + " kr\n" +
                 "Kjøpt: " + purchaseTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) + "\n" +
                 "=======================\n";
     }
