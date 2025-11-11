@@ -103,7 +103,6 @@ public class RouteController {
         LocalTime valgtTidspunkt = filtrering.hentØnsketTidspunktFraBruker(Avganger, vilHaHund, vilHaRullestol, brukerInput);
 
             if (valgtTidspunkt == null) {
-                System.out.println("\nBillettkjøp avbrutt – du kan endre preferansene dine fra hovedmenyen.");
                 return; // trygt tilbake til menyen
             }
 
@@ -116,7 +115,7 @@ public class RouteController {
         }
 
         String rabattOppsum = "";
-        int prisOppsummering = 0;
+        int prisOppsummering = 50;
 
         if (erHonnoer==true) {
             prisOppsummering = 25;
