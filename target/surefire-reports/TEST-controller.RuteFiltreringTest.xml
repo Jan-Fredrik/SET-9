@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="controller.RuteFiltreringTest" time="0.093" tests="7" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="23"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\target\test-classes;C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\target\classes;C:\Users\jaffe\.m2\repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\jaffe\.m2\repository\com\google\protobuf\protobuf-java\3.25.1\protobuf-java-3.25.1.jar;C:\Users\jaffe\.m2\repository\org\mindrot\jbcrypt\0.4\jbcrypt-0.4.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jaffe\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\jaffe\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Oslo"/>
+    <property name="user.country.format" value="NO"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="23"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Users\jaffe\.jdks\openjdk-23.0.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\jaffe\AppData\Local\Temp\surefire3163948486161623239\surefirebooter-20251111130738282_3.jar C:\Users\jaffe\AppData\Local\Temp\surefire3163948486161623239 2025-11-11T13-07-37_491-jvmRun1 surefire-20251111130738282_1tmp surefire_0-20251111130738282_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\target\test-classes;C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\target\classes;C:\Users\jaffe\.m2\repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\jaffe\.m2\repository\com\google\protobuf\protobuf-java\3.25.1\protobuf-java-3.25.1.jar;C:\Users\jaffe\.m2\repository\org\mindrot\jbcrypt\0.4\jbcrypt-0.4.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\jaffe\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\jaffe\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\jaffe\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\jaffe"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-10-15"/>
+    <property name="java.home" value="C:\Users\jaffe\.jdks\openjdk-23.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9"/>
+    <property name="style.color" value="always"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\jaffe\AppData\Local\Temp\surefire3163948486161623239\surefirebooter-20251111130738282_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="23.0.1+11-39"/>
+    <property name="user.name" value="jaffe"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2025.2.2\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="localRepository" value="C:\Users\jaffe\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\jaffe\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2025.2.4"/>
+    <property name="java.version" value="23.0.1"/>
+    <property name="user.dir" value="C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="jansi.passthrough" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.language.format" value="no"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\jaffe\.jdks\openjdk-23.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Python313\Scripts\;C:\Python313\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\doxygen\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;;C:\Program Files\PowerShell\7\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\jaffe\AppData\Local\Programs\Python\Launcher\;C:\Users\jaffe\AppData\Local\Microsoft\WindowsApps;C:\Users\jaffe\AppData\Local\GitHubDesktop\bin;C:\Users\jaffe\AppData\Local\Programs\Microsoft VS Code\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="23.0.1+11-39"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="C:\Users\jaffe\.m2\repository"/>
+    <property name="java.class.version" value="67.0"/>
+  </properties>
+  <testcase name="testHentØnsketTidspunktFraBruker_skriverFiltrer" classname="controller.RuteFiltreringTest" time="0.032"/>
+  <testcase name="testHentØnsketTidspunktFraBruker_ugyldigDeretterGyldig" classname="controller.RuteFiltreringTest" time="0.01"/>
+  <testcase name="testVisBareFiltrerteAvganger_ingenTreff_ogFortsetter" classname="controller.RuteFiltreringTest" time="0.0"/>
+  <testcase name="testHentØnsketTidspunktFraBruker_skriverFiltrerOgAvbryter" classname="controller.RuteFiltreringTest" time="0.0"/>
+  <testcase name="testVisBareFiltrerteAvganger_medTreff" classname="controller.RuteFiltreringTest" time="0.0"/>
+  <testcase name="testFiltrerAvgangerEtterPreferanser_skriverUtAlle" classname="controller.RuteFiltreringTest" time="0.0"/>
+  <testcase name="testHentØnsketTidspunktFraBruker_gyldigTidspunkt" classname="controller.RuteFiltreringTest" time="0.014"/>
+</testsuite>

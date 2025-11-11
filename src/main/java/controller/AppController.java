@@ -5,6 +5,7 @@ import repository.FakeBussAPI;
 import view.KonsollView;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class AppController {
@@ -14,7 +15,6 @@ public class AppController {
     private final BetalingController betalingCtrl = new BetalingController();
     private Bruker innlogget = null; // null = ingen innlogget
     private final RouteController routeCtrl = new RouteController(new FakeBussAPI(), new KonsollView());
-
 
     // EN kall-funksjon som starter hele greia
     public void run() {
@@ -67,10 +67,11 @@ public class AppController {
         // Menyvalg i ny rekkefølge
         if (innlogget.getRolle().equalsIgnoreCase("kunde")) {
             System.out.println("1) Kjøp billett");
+            System.out.println("2) Se billetter");
         }
-        System.out.println("2) Se egen profil");
-        System.out.println("3) Endre egen profil");
-        System.out.println("4) Endre preferanser");
+        System.out.println("3) Se egen profil");
+        System.out.println("4) Endre egen profil");
+        System.out.println("5) Endre preferanser");
         System.out.println("9) Logg ut");
 
         System.out.print("Velg: ");
@@ -84,28 +85,73 @@ public class AppController {
                     System.out.println("Ikke tilgjengelig for din rolle.");
                 }
                 break;
+
             case "2":
+                if (innlogget.getRolle().equalsIgnoreCase("kunde")) {
+                    LocalDate valgtDato = null;
+
+                    while (valgtDato == null) {
+                        System.out.println("\nSe billetter kjøpt i dag — skriv 'ja'.");
+                        System.out.println("Se billetter fra en annen dag — skriv dato på formatet YYYY-MM-DD.");
+                        System.out.print("Ditt valg: ");
+                        String svar = sc.nextLine().trim().toLowerCase();
+
+                        if (svar.equals("ja")) {
+                            valgtDato = LocalDate.now();
+                        } else {
+                            try {
+                                valgtDato = LocalDate.parse(svar);
+                            } catch (Exception e) {
+                                System.out.println("Feil format. Bruk formatet YYYY-MM-DD og prøv igjen.\n");
+                            }
+                        }
+                    }
+
+                    System.out.println("\n--- BILLETTER KJØPT DEN " + valgtDato + " ---");
+                    Ticket.getTicketsByDate(valgtDato);
+                    for (Ticket ticket : Ticket.getTicketsByDate(valgtDato)) {
+                        System.out.println(ticket);
+                    }
+
+
+                } else {
+                    System.out.println("Denne funksjonen er kun for kunder.");
+                }
+                break;
+
+            case "3":
                 visProfil();
                 break;
-            case "3":
+
+            case "4":
                 endreProfilFlow();
                 break;
+
+            case "5":
+                if (innlogget.getRolle().equalsIgnoreCase("kunde")) {
+                    System.out.println("\n--- Endre preferanser ---\n");
+                    FiltreringInnstillingHandler prefHandler = new FiltreringInnstillingHandler("preferanser.properties");
+                    prefHandler.endrePreferanser();
+                } else {
+                    System.out.println("Bare kunder kan endre preferanser.");
+                }
+                break;
+
             case "9":
                 innlogget = null;
                 System.out.println("Logget ut.");
                 break;
+
             default:
                 System.out.println("Ugyldig valg.");
         }
     }
+
     // =====================
     //   FLOW-METODER
     // =====================
 
     private void registrerBrukerFlow() throws SQLException {
-
-
-
         System.out.print("Navn: ");
         String navn = sc.nextLine();
 
@@ -123,7 +169,7 @@ public class AppController {
         String telefon = sc.nextLine();
         if (!telefon.matches("\\d{8,15}")) {
             System.out.println("Ugyldig telefon. Avbryter registrering.");
-            return; // tilbake til hovedmeny
+            return;
         }
 
         // Fødselsdato er valgfri, men må ha format YYYY-MM-DD hvis oppgitt
@@ -134,30 +180,14 @@ public class AppController {
             return;
         }
 
-
-        // JF's preferanse-endring
-        // ------------------------------------------------------
-        //          -- SETTING AV PREFERANSER --
-        // Setter preferanser bare hvis "rollen" er satt som kunde.
-        // Man kan sette/endre preferanser i hovedmenyen også.
-
         if (rolle.equalsIgnoreCase("kunde")) {
-
-            // Hvis "ja", bli det "true" i pref-fila
-            // "nei", eller hva som helst annet blir "false"
             System.out.println("--- Sett dine preferanser ---");
             FiltreringInnstillingHandler prefHandler = new FiltreringInnstillingHandler("preferanser.properties");
             prefHandler.endrePreferanser();
-
-
         }
 
-
-
-        // Registrerer ny bruker gjennom kontrolleren
         Bruker ny = brukerCtrl.registrerBruker(navn, epost, pass, rolle, telefon, fodselsdato);
 
-        // Viser bekreftelse og rettigheter
         System.out.println("Opprettet: " + ny.getNavn() + " (" + ny.getRolle() + ")");
         System.out.println("Tlf: " + ny.getTelefon() + ", Født: " + (ny.getFodselsdato() == null ? "-" : ny.getFodselsdato()));
         System.out.println("Rettigheter: se=" + ny.getKanSe() + ", endre=" + ny.getKanEndre() + ", slette=" + ny.getKanSlette());
@@ -170,7 +200,6 @@ public class AppController {
         System.out.print("Passord: ");
         String p = sc.nextLine();
 
-        // Henter bruker basert på e-post
         Bruker b = brukerCtrl.hentBruker(e);
 
         if (b == null) {
@@ -178,7 +207,6 @@ public class AppController {
         } else if (!Hashing.checkPassword(p, b.getPassordHash())) {
             System.out.println("Feil passord.");
         } else {
-            // Hvis alt stemmer, logg inn
             innlogget = b;
             System.out.println("Innlogging OK. Velkommen, " + innlogget.getNavn() + " (" + innlogget.getRolle() + ")");
         }
@@ -218,9 +246,6 @@ public class AppController {
             return;
         }
 
-        System.out.println("");
-
-        // Oppdaterer brukerens informasjon gjennom kontrolleren
         boolean ok = brukerCtrl.oppdaterBruker(
                 innlogget,
                 innlogget.getBrukerId(),
@@ -232,27 +257,20 @@ public class AppController {
         );
 
         if (ok) {
-            // Henter oppdatert informasjon fra databasen
             innlogget = brukerCtrl.hentBrukerById(innlogget.getBrukerId());
             System.out.println("Profil oppdatert.");
         } else {
             System.out.println("Kunne ikke oppdatere profil.");
         }
 
-        // ---------------------------
-        // Tillegg: Endre preferanser
-        //
-
         System.out.print("Vil du endre dine preferanser også? (ja/nei): ");
         String svar = sc.nextLine().trim().toLowerCase();
 
         if (svar.equals("ja")) {
             FiltreringInnstillingHandler prefHandler = new FiltreringInnstillingHandler("preferanser.properties");
-            prefHandler.endrePreferanser(); // note to selv, load og save i metodn
+            prefHandler.endrePreferanser();
         } else {
             System.out.println("Preferansene ble ikke endret.\n");
         }
-
-
     }
 }

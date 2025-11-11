@@ -43,7 +43,7 @@ public class FiltreringInnstillingHandler {
     public void saveTo() {
         try (FileOutputStream out = new FileOutputStream(fileName)) {
             props.store(out, "App Settings");
-            System.out.println("Filtrerings-preferanse lagret til " + fileName);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,7 +72,7 @@ public class FiltreringInnstillingHandler {
         setPrefValue("honner", String.valueOf(honnor.equals("ja")));
 
         saveTo();
-        System.out.println("Preferanser oppdatert og lagret.");
+        System.out.println("\nPreferanser oppdatert og lagret.");
     }
 
 
