@@ -100,16 +100,15 @@ public class RouteController {
 
         filtrering.FiltrerAvgangerEtterPreferanser(Avganger);
 
-
         LocalTime valgtTidspunkt = filtrering.hentØnsketTidspunktFraBruker(Avganger, vilHaHund, vilHaRullestol, brukerInput);
 
             if (valgtTidspunkt == null) {
-                return; // tilbake til brukermeny'n
+                System.out.println("\nBillettkjøp avbrutt – du kan endre preferansene dine fra hovedmenyen.");
+                return; // trygt tilbake til menyen
             }
 
-        System.out.println("\n Du valgte tidspunkt: " + valgtTidspunkt + "\n");
 
-        String billettType;
+            String billettType;
         if ( enkeltBillett==true ) {           // Hvis ikke enkel-billett, så er det en periode-billett vice versa
             billettType = "Enkelbillett";
         } else {
@@ -147,8 +146,8 @@ public class RouteController {
         String bekreft = brukerInput.nextLine().trim().toLowerCase();
 
         if (bekreft.equals("j")) {
-            view.visMelding("\n Billetten er kjøpt! God tur!");
-            view.visMelding("\nBilletten din er nå lagret på enheten din!");
+            view.visMelding("\nWoohoo! Billetten er kjøpt! God tur!");
+            view.visMelding("\nBilletten din er nå lagret i 'Se billetter'!");
 
             String routeString = fraBy + " - " + fraStopp + " -> " + tilBy + " - " + tilStopp;
             Ticket ticket = new Ticket(routeString);
