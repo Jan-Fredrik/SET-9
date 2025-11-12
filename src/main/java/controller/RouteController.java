@@ -1,5 +1,7 @@
 package controller;
 
+import models.RouteChange;
+import models.RouteTrigger;
 import models.Ticket;
 import repository.FakeBussAPI;
 import repository.FakeBussData;
@@ -147,6 +149,15 @@ public class RouteController {
         if (bekreft.equals("j")) {
             view.visMelding("\nWoohoo! Billetten er kjøpt! God tur!");
             view.visMelding("\nBilletten din er nå lagret i 'Se billetter'!");
+
+            // ---------------------------------------------------------
+            // Per sin varslings-metode.
+            // Har 1/3 sjanse for at det kommer en tilfeldig melding
+            RouteChange routeChange = new RouteChange();
+            RouteTrigger routeTrigger = new RouteTrigger(routeChange);
+
+            routeTrigger.wakeUpRouteChange();
+            // -----------------------------------------------------------
 
             String routeString = fraBy + " - " + fraStopp + " -> " + tilBy + " - " + tilStopp;
             Ticket ticket = new Ticket(routeString);
