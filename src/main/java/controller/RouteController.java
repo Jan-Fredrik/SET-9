@@ -3,7 +3,7 @@ package controller;
 import models.Ticket;
 import repository.FakeBussAPI;
 import repository.FakeBussData;
-import view.TerminalView;
+import view.KonsollView;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -12,19 +12,23 @@ import java.util.*;
 public class RouteController {
 
     private final FakeBussAPI api;
-    private final TerminalView view;
+    private final KonsollView view;
 
-    public RouteController(FakeBussAPI api, TerminalView view) {
+    public RouteController(FakeBussAPI api, KonsollView view) {
         this.api = api;
         this.view = view;
     }
 
     public void velgReise(Scanner brukerInput) {
 
-        // ////////////////////
-        // Viktige variabler
+        boolean kjør = true;
 
-        boolean enkeltBillett = false;
+        while (kjør) {
+
+            // ////////////////////
+            // Viktige variabler
+
+            boolean enkeltBillett = false;
         boolean periodeBillett = false;
 
         //
@@ -78,62 +82,85 @@ public class RouteController {
         //             hvilke tilgjengeligheter bussene har.
         //
 
-        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
+        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("preferanser.properties");
         pref.loadFrom();
 
         boolean vilHaHund = Boolean.parseBoolean(pref.getPrefValue("hund", "false"));
         boolean vilHaRullestol = Boolean.parseBoolean(pref.getPrefValue("rullestol", "false"));
+        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
+        boolean erHonnoer = Boolean.parseBoolean(pref.getPrefValue("honner", "false"));
 
 
-        FakeBussData api = new FakeBussData();
-        List<FakeBussAPI> Avganger = api.hentAvganger(fraBy);
+
+        FakeBussData apiData = new FakeBussData();
+        List<FakeBussAPI> Avganger = apiData.hentAvganger(fraBy);
 
 
         RuteFiltrering filtrering = new RuteFiltrering();
 
         filtrering.FiltrerAvgangerEtterPreferanser(Avganger);
 
+        LocalTime valgtTidspunkt = filtrering.hentØnsketTidspunktFraBruker(Avganger, vilHaHund, vilHaRullestol, brukerInput);
 
-        LocalTime valgtTidspunkt = filtrering.hentØnsketTidspunktFraBruker(Avganger, vilHaHund, vilHaRullestol);
+            if (valgtTidspunkt == null) {
+                return; // trygt tilbake til menyen
+            }
 
-        System.out.println("\n Du valgte tidspunkt: " + valgtTidspunkt + "\n");
 
-        view.visMelding("\n----------------------------------------------------");
+            String billettType;
+        if ( enkeltBillett==true ) {           // Hvis ikke enkel-billett, så er det en periode-billett vice versa
+            billettType = "Enkelbillett";
+        } else {
+            billettType = "Periodebillett";
+        }
+
+        String rabattOppsum = "";
+        int prisOppsummering = 50;
+
+        if (erHonnoer==true) {
+            prisOppsummering = 25;
+            rabattOppsum = "(Honnør-rabatt)";
+        } else if (erStudent == true) {
+            prisOppsummering = 25;
+            rabattOppsum = "(Student-rabatt)";
+        }
+
+        if (periodeBillett==true) {
+            prisOppsummering = 0;
+            rabattOppsum = "(Periodebillett, allerede betalt)";
+        }
+
+        view.visMelding("\n-------------------------------------");
         view.visMelding(" --------- REISEOPPSUMMERING ---------");
+
+        view.visMelding("Billett-type: " + billettType );
         view.visMelding("Fra: " + fraBy + " - " + fraStopp);
         view.visMelding("Til:  " + tilBy + " - " + tilStopp);
         view.visMelding("Avreise ønsket: " + valgtTidspunkt);
+        view.visMelding("Pris: " + prisOppsummering + " kr " + rabattOppsum);
         view.visMelding("----------------------------------------------------");
 
-        Scanner sc = new Scanner(System.in);
+
         System.out.print("\nVil du bekrefte og kjøpe billett? (j/n): ");
-        String bekreft = sc.nextLine().trim().toLowerCase();
+        String bekreft = brukerInput.nextLine().trim().toLowerCase();
 
         if (bekreft.equals("j")) {
-            view.visMelding("\n Billetten er kjøpt! God tur!");
-            view.visMelding("\nBilletten din er nå lagret på enheten din!");
+            view.visMelding("\nWoohoo! Billetten er kjøpt! God tur!");
+            view.visMelding("\nBilletten din er nå lagret i 'Se billetter'!");
+
+            String routeString = fraBy + " - " + fraStopp + " -> " + tilBy + " - " + tilStopp;
+            Ticket ticket = new Ticket(routeString);
+            kjør = false;
 
         } else {
-            view.visMelding("\nStarter på nytt...\n");
-            velgReise(new Scanner(System.in));
+            view.visMelding("\nAvslutter...\n");
+            return;
+
         }
 
-        boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
-        boolean erHonnoer = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
-
-        String routeString = fraBy + " - " + fraStopp + " -> " + tilBy + " - " + tilStopp;
 
 
-        Ticket ticket = new Ticket(routeString);
-
-
-
-        // Etter kjøpt billett, returnerer til hovedmenyen.
-
-
-
-
-
+    }
     }
 
 

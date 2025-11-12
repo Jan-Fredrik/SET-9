@@ -1,4 +1,5 @@
 package models;
+
 import controller.FiltreringInnstillingHandler;
 
 import java.io.BufferedReader;
@@ -12,36 +13,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-// Klassen skal opprette objekter av typen billett, og skal holde informasjon om hver enkelt billett som
-// kjøpes gjennom app'en. Kobles til en bruker, må kunne vise hvilken type billett, hvor lenge den er gyldig
-// og hva den er gyldig for
-
 public class Ticket {
 
-    // Attributes
     private int id;
     private int orderId;
     private LocalDateTime isValidStart;
     private LocalDateTime isValidEnd;
-    private double price = 50;
+    private double price;
 
-    // Attributter JF la til ift. billett-lagring
     private String ticketID;
-    private String passengerName;
     private String route;
     private LocalDateTime purchaseTime;
+
     private static final String FILE_NAME = "local_tickets.txt";
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    //attributter for å holde en bruker, kanskje en billettype (Vy, Østfold Kollektiv osv)
-    //attributt for om en billett er gyldig, et objekt av Order, holde på rabbatt (student/honnør)
-
-
-
-
-
-    // Constructors
-    public Ticket () {}
+    // ---------- KONSTRUKTØRER ----------
+    public Ticket() {}
 
     public Ticket(LocalDateTime isValidStart, LocalDateTime isValidEnd, int orderId, double price) {
         this.isValidStart = isValidStart;
@@ -58,56 +46,43 @@ public class Ticket {
         this.price = price;
     }
 
-
-    // VIKTIG
-    // Konstruktør som brukes av metoden: getTicketsByDate
-    private Ticket(String ticketID, String passengerName, String route, double price, LocalDateTime purchaseTime) {
+    // brukes i getTicketsByDate()
+    private Ticket(String ticketID, String route, double price, LocalDateTime purchaseTime) {
         this.ticketID = ticketID;
-        this.passengerName = passengerName;
         this.route = route;
         this.price = price;
         this.purchaseTime = purchaseTime;
     }
 
-
-    // Konstruerer Ticket-objekt som skrives rett til fil "local-tickets.txt"
+    // oppretter og lagrer billett
     public Ticket(String route) {
         Random rand = new Random();
-        int ticketNumber = 100000 + rand.nextInt(900000);
+        int ticketNumber = 10000 + rand.nextInt(90000);
 
-        this.orderId = Integer.parseInt(String.valueOf(ticketNumber));
-        this.route = route;
-        this.price = price;
-        this.purchaseTime = LocalDateTime.now();
-
-        saveTicketLocally(); // lagre automatisk ved opprettelse
-    }
-                                // METODER //
-
-    // ////////////////////////////////////////////////
-    // Lagrer billetten til local_tickets.txt
-    //
-
-    private void saveTicketLocally() {
-
-        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("filtrering_innstillinger.properties");
+        FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler("preferanser.properties");
         pref.loadFrom();
 
         boolean erStudent = Boolean.parseBoolean(pref.getPrefValue("student", "false"));
-        boolean erHonnør = Boolean.parseBoolean(pref.getPrefValue("honnør", "false"));
-
-        double prisJustering = price;
-        if (erStudent==true || erHonnør==true) {
-            prisJustering = price*0.5;
-        }
+        boolean erHonner = Boolean.parseBoolean(pref.getPrefValue("honner", "false"));
 
 
 
+        this.orderId = ticketNumber;
+        this.route = route;
+
+        this.price = (erStudent || erHonner) ? 25 : 50;
+        this.purchaseTime = LocalDateTime.now();
+
+        saveTicketLocally();
+    }
+
+    // ---------- METODER ----------
+
+    private void saveTicketLocally() {
         try (FileWriter writer = new FileWriter(FILE_NAME, true)) {
             writer.write("\n==== BUSS BILLETT ====\n");
-            writer.write("Kjøps-ID: " + ticketID + "\n");    // RANDOM TALL
-            writer.write("Rute: " + route + "\n"); // FRAvalgtBY - FRAvalgtSted -> TILvalgtBy - TIlvalgtSTED
-            writer.write("Pris: " + prisJustering + " kr\n"); // PRIS + HONNØR x (HVIS IKKE HONNØR = 0) + STUDENT x (HVIS IKKE STUDENT = 0)
+            writer.write("Kjøps-ID: " + orderId + "\n");
+            writer.write("Reise: " + route + "\n");
             writer.write("Kjøpt: " + purchaseTime.format(FORMATTER) + "\n");
             writer.write("=======================\n");
         } catch (IOException e) {
@@ -115,36 +90,24 @@ public class Ticket {
         }
     }
 
-    // ///////////////////////////////////////////////
-    // Henter alle billetter kjøpt på en spesifikk dato
-    //
-
     public static List<Ticket> getTicketsByDate(LocalDate date) {
         List<Ticket> tickets = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
             String line;
-            String id = null, name = null, route = null;
-            double price = 0;
+            String id = null, route = null;
             LocalDateTime time = null;
 
-
             while ((line = reader.readLine()) != null) {
-
-                if (line.startsWith("ID: ")) {                         // SJEKK BILLETT-KJØP
-                    id = line.substring(3).trim();
-                } else if (line.startsWith("Navn: ")) {
-                    name = line.substring(5).trim();
+                if (line.startsWith("Kjøps-ID: ")) {
+                    id = line.substring(9).trim();
                 } else if (line.startsWith("Reise: ")) {
-                    route = line.substring(5).trim();
-                } else if (line.startsWith("Pris: ")) {
-                    price = Double.parseDouble(line.substring(5).trim());
+                    route = line.substring(7).trim();
                 } else if (line.startsWith("Kjøpt: ")) {
-                    time = LocalDateTime.parse(line.substring(6).trim(), FORMATTER);
-
+                    time = LocalDateTime.parse(line.substring(7).trim(), FORMATTER);
 
                     if (time.toLocalDate().equals(date)) {
-                        tickets.add(new Ticket(id, name, route, price, time));
+                        tickets.add(new Ticket(id, route, 0, time)); // pris = 0, fordi vi ikke viser det
                     }
                 }
             }
@@ -155,90 +118,37 @@ public class Ticket {
         return tickets;
     }
 
-    // //////////////////////////////////////////////////////////////////////
-    // Metoden her er bare lagd for å renske local_tickets.txt under testing
-    //
     public static void clearAllTickets() {
-        try (FileWriter writer = new FileWriter(FILE_NAME, false)) { // false = overskriv fil
-            writer.write(""); // skriver ingenting, bare tømmer
-            System.out.println("Alle billettan e sletta JF");
+        try (FileWriter writer = new FileWriter(FILE_NAME, false)) {
+            writer.write("");
+            System.out.println("Alle billettene er slettet.");
         } catch (IOException e) {
-            System.out.println("nope" + e.getMessage());
+            System.out.println("Feil ved sletting: " + e.getMessage());
         }
     }
-
-
-
-
 
     @Override
     public String toString() {
         return "\n==== BUSS BILLETT ====\n" +
-                "ID: " + ticketID + "\n" +
-                "Navn: " + passengerName + "\n" +
-                "Rute: " + route + "\n" +
-                "Pris: " + price + " kr\n" +
+                "Kjøps-ID: " + ticketID + "\n" +
+                "Reise: " + route + "\n" +
                 "Kjøpt: " + purchaseTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) + "\n" +
                 "=======================\n";
     }
 
-
-
-    // Getter-setter
-    public int getTicketId() {
-        return id;
-    }
-
-    public LocalDateTime getIsValidStart() {
-        return isValidStart;
-    }
-
-    public LocalDateTime getIsValidEnd() {
-        return isValidEnd;
-    }
-
-    public void setTicketId(int ticketId) {
-        this.id = ticketId;
-    }
-
-    public void setIsValidStart(LocalDateTime isValidStart) {
-        this.isValidStart = isValidStart;
-    }
-
-    public void setIsValidEnd(LocalDateTime isValidEnd) {
-        this.isValidEnd = isValidEnd;
-    }
-
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public String getTicketID() {
-        return ticketID;
-    }
-
-    public void setTicketID(String ticketID) {
-        this.ticketID = ticketID;
-    }
+    // ---------- GETTERS/SETTERS ----------
+    public int getTicketId() { return id; }
+    public LocalDateTime getIsValidStart() { return isValidStart; }
+    public LocalDateTime getIsValidEnd() { return isValidEnd; }
+    public void setTicketId(int ticketId) { this.id = ticketId; }
+    public void setIsValidStart(LocalDateTime isValidStart) { this.isValidStart = isValidStart; }
+    public void setIsValidEnd(LocalDateTime isValidEnd) { this.isValidEnd = isValidEnd; }
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    public int getOrderId() { return orderId; }
+    public void setOrderId(int orderId) { this.orderId = orderId; }
+    public String getTicketID() { return ticketID; }
+    public void setTicketID(String ticketID) { this.ticketID = ticketID; }
 }
