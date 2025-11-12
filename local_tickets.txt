@@ -1,6 +1,6 @@
 
 ==== BUSS BILLETT ====
-Kjøps-ID: 91363
-Reise: Fredrikstad - Fredrikstad stasjon -> Fredrikstad - Fredrikstad stasjon
-Kjøpt: 2025-11-11 21:15:29
+Kjøps-ID: 63924
+Reise: Fredrikstad - Gamlebyen -> Moss - Varnaveien
+Kjøpt: 2025-11-11 22:31:15
 =======================
