@@ -6,6 +6,7 @@ import view.KonsollView;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppController {
@@ -108,10 +109,16 @@ public class AppController {
                     }
 
                     System.out.println("\n--- BILLETTER KJØPT DEN " + valgtDato + " ---");
-                    Ticket.getTicketsByDate(valgtDato);
-                    for (Ticket ticket : Ticket.getTicketsByDate(valgtDato)) {
-                        System.out.println(ticket);
+                    List<Ticket> billetter = Ticket.getTicketsByDate(valgtDato);
+
+                    if (billetter.isEmpty()) {
+                        System.out.println("Her var det tomt! Ingen billetter på denne dagen.");
+                    } else {
+                        for (Ticket ticket : billetter) {
+                            System.out.println(ticket);
+                        }
                     }
+
 
 
                 } else {

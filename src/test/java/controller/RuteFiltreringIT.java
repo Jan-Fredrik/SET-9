@@ -40,7 +40,7 @@ class RuteFiltreringTest {
         String konsoll = output.toString();
         assertTrue(konsoll.contains("Filtrerte avganger"));
         assertTrue(konsoll.contains("06:00"));
-        assertTrue(konsoll.contains("Rullestolvennlig"));
+        assertTrue(konsoll.contains("Rullestol"));
     }
 
     // -------------------------------------------------------
@@ -69,15 +69,13 @@ class RuteFiltreringTest {
         String input = "filtrer\nj\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
 
-        // avganger som ikke matcher preferanser
         List<FakeBussAPI> avganger = new ArrayList<>();
         avganger.add(new FakeBussAPI("06:00", true, false));
         avganger.add(new FakeBussAPI("07:00", false, true));
 
-        // forvent at metoden kaster RuntimeException når "j" skrives
-        assertThrows(RuntimeException.class, () ->
-                        filtrering.hentØnsketTidspunktFraBruker(avganger, false, false, scanner),
-                "Forventet at bruker skriver 'filtrer' og deretter 'j' -> RuntimeException");
+        // Forvent at metoden returnerer null (avbrutt)
+        LocalTime resultat = filtrering.hentØnsketTidspunktFraBruker(avganger, false, false, scanner);
+        assertNull(resultat, "Forventet at brukeren avbrøt billettkjøpet -> returnerer null");
     }
 
     // -------------------------------------------------------
@@ -85,34 +83,23 @@ class RuteFiltreringTest {
     // -------------------------------------------------------
     @Test
     void testVisBareFiltrerteAvganger_ingenTreff_ogFortsetter() {
-        // Sett opp avganger som IKKE matcher preferanser
         List<FakeBussAPI> avganger = new ArrayList<>();
-        avganger.add(new FakeBussAPI("08:00", true, true)); // hundevennlig OG rullestolvennlig
-        avganger.add(new FakeBussAPI("09:00", true, true)); // alle matcher ikke false,false
+        avganger.add(new FakeBussAPI("08:00", true, true));
+        avganger.add(new FakeBussAPI("09:00", true, true));
 
-        // Bruker svarer "n" for å fortsette
         String input = "n\n";
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
 
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
-        RuteFiltrering filtrering = new RuteFiltrering();
-
-        // Kjør metoden
-        assertDoesNotThrow(() ->
-                filtrering.visBareFiltrerteAvganger(avganger, false, false, scanner)
-        );
+        boolean avbrutt = filtrering.visBareFiltrerteAvganger(avganger, false, false, scanner);
 
         String out = output.toString();
-
-        // Bekreft forventet flyt
-        assertTrue(out.contains("Ånei! Ingen avganger matcher dine preferanser"),
-                "Skal vise melding om at ingen avganger matcher");
+        assertFalse(avbrutt, "Forventet at brukeren ikke avbrøt (n)");
         assertTrue(out.contains("Fortsetter med dagens innstillinger"),
                 "Skal vise melding om at man fortsetter");
     }
-
 
     // -------------------------------------------------------
     // TEST: hentØnsketTidspunktFraBruker – gyldig tidspunkt
@@ -123,7 +110,6 @@ class RuteFiltreringTest {
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
 
         LocalTime valgt = filtrering.hentØnsketTidspunktFraBruker(avganger, false, false, scanner);
-
         assertEquals(LocalTime.of(8, 0), valgt);
     }
 

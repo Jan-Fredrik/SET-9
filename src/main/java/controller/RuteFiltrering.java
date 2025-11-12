@@ -1,7 +1,6 @@
 package controller;
 
 import repository.FakeBussAPI;
-import view.TerminalView;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -12,9 +11,7 @@ import java.util.Scanner;
 
 public class RuteFiltrering {
 
-    // Viser avganger i konsollen basert på preferansan
-    //
-
+    // Viser alle avganger (for oversikt)
     public void FiltrerAvgangerEtterPreferanser(List<FakeBussAPI> avganger) {
         System.out.println("\n Filtrerte avganger:");
         System.out.printf("%-8s | %-18s | %-20s%n", "Avgang", "Hund", "Rullestol");
@@ -29,8 +26,8 @@ public class RuteFiltrering {
         }
     }
 
-
-    public void visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
+    // Viser kun avganger som matcher brukerens preferanser
+    public boolean visBareFiltrerteAvganger(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
         System.out.println("\nFiltrerte avganger som nøyaktig passer dine preferanser\n");
         System.out.println("Avgang");
         System.out.println("-----------------------------------------------");
@@ -44,7 +41,7 @@ public class RuteFiltrering {
             }
         }
 
-        // Hvis ingen avganger matcher
+        // Hvis ingen avganger matcher preferansene
         if (bareFiltreteAvganger.isEmpty()) {
             System.out.println("\nÅnei! Ingen avganger matcher dine preferanser.");
             System.out.print("Vil du gå ut av billettkjøpet for å endre preferansene dine? (j/n): ");
@@ -53,7 +50,7 @@ public class RuteFiltrering {
 
             if (svar.equals("j")) {
                 System.out.println("\nAvbryter billettkjøp slik at du kan oppdatere preferansene dine.");
-                throw new RuntimeException("Avbrutt for å endre preferanser");
+                return true; // signaliserer til RouteController at brukeren vil avbryte
             } else {
                 System.out.println("\nFortsetter med dagens innstillinger...");
                 System.out.println("\nViser alle tilgjengelige avganger igjen:\n");
@@ -70,11 +67,12 @@ public class RuteFiltrering {
                 }
             }
         }
+
+        return false;
     }
 
+
     public LocalTime hentØnsketTidspunktFraBruker(List<FakeBussAPI> avganger, boolean hundePref, boolean rullestolPref, Scanner brukerInput) {
-
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime valgtTid = null;
 
@@ -83,16 +81,17 @@ public class RuteFiltrering {
             System.out.print("eller skriv \"filtrer\" for å se ruter som spesifikt passer for deg: ");
             String input = brukerInput.nextLine().trim().toLowerCase();
 
-            // Hvis bruker skriver "filtrer" -> vis preferansebaserte avganger
             if (input.equals("filtrer")) {
                 System.out.println("\n--------------- Filtrert etter preferanser ---------------");
-                visBareFiltrerteAvganger(avganger, hundePref, rullestolPref, brukerInput);
+                boolean avbrutt = visBareFiltrerteAvganger(avganger, hundePref, rullestolPref, brukerInput);
                 System.out.println("----------------------------------------------------------");
 
+                if (avbrutt) {
+                    return null; // signaliserer til RouteController at brukeren avbrøt
+                }
                 continue;
             }
 
-            // Hvis bruker skriver klokkeslett med fallback
             try {
                 valgtTid = LocalTime.parse(input, formatter);
             } catch (DateTimeParseException e) {
@@ -102,9 +101,4 @@ public class RuteFiltrering {
 
         return valgtTid;
     }
-
-
-
-
-
 }

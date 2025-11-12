@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TicketIT {
 
     private static final String TEST_FILE = "local_tickets.txt";
-    private static final String PREF_FILE = "filtrering_innstillinger.properties";
+    private static final String PREF_FILE = "preferanser.properties";
 
     @BeforeEach
     void setUp() throws IOException {
@@ -23,7 +23,7 @@ class TicketIT {
         // Lag en "ren" preferansefil uten student/honnør-rabatt
         FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler(PREF_FILE);
         pref.setPrefValue("student", "false");
-        pref.setPrefValue("honnør", "false");
+        pref.setPrefValue("honner", "false");
         pref.saveTo();
     }
 
@@ -39,31 +39,24 @@ class TicketIT {
     // -------------------------------------------------------
     @Test
     void testSaveTicketLocally_savesTicketToFile() throws IOException {
-        // Opprett ny billett (lagres automatisk til fil)
         new Ticket("Halden-Oslo");
 
-        // Sjekk at fila nå eksisterer og inneholder tekst
         assertTrue(Files.exists(Path.of(TEST_FILE)), "local_tickets.txt skal være opprettet");
         String innhold = Files.readString(Path.of(TEST_FILE));
-        assertTrue(innhold.contains("Rute: Halden-Oslo"), "Fil skal inneholde valgt rute");
+        assertTrue(innhold.contains("Reise: Halden-Oslo"), "Fil skal inneholde valgt reise");
     }
 
     // -------------------------------------------------------
-    // Tester at student/honnør gir rabatt på 50 %
+    // Tester at student/honnør gir rabatt på 50 % (internt, ikke i fil)
     // -------------------------------------------------------
     @Test
-    void testSaveTicketLocally_appliesDiscountFromPreferences() throws IOException {
-        // Sett rabatt i preferansefil
+    void testSaveTicketLocally_appliesDiscountFromPreferences() {
         FiltreringInnstillingHandler pref = new FiltreringInnstillingHandler(PREF_FILE);
         pref.setPrefValue("student", "true");
         pref.saveTo();
 
-        // Opprett ny billett med standardpris 50 kr
-        new Ticket("Moss-Fredrikstad");
-
-        // Les filen og sjekk at prisen er halvert
-        String innhold = Files.readString(Path.of(TEST_FILE));
-        assertTrue(innhold.contains("Pris: 25.0"), "Studentrabatt skal gi halv pris (25 kr)");
+        Ticket t = new Ticket("Moss-Fredrikstad");
+        assertEquals(25.0, t.getPrice(), "Studentrabatt skal gi halv pris (25 kr)");
     }
 
     // -------------------------------------------------------
@@ -71,10 +64,8 @@ class TicketIT {
     // -------------------------------------------------------
     @Test
     void testGetTicketsByDate_returnsTicketsForToday() {
-        // Opprett billett som lagres med dagens dato
         new Ticket("Sarpsborg-Oslo");
 
-        // Hent billetter for i dag
         List<Ticket> result = Ticket.getTicketsByDate(LocalDate.now());
         assertNotNull(result);
         assertFalse(result.isEmpty(), "Skal finne minst én billett for dagens dato");
@@ -85,8 +76,8 @@ class TicketIT {
     // -------------------------------------------------------
     @Test
     void testClearAllTickets_emptiesFile() throws IOException {
-        new Ticket("Fredrikstad-Oslo"); // Opprett billett først
-        Ticket.clearAllTickets();       // Tøm alt
+        new Ticket("Fredrikstad-Oslo");
+        Ticket.clearAllTickets();
 
         String innhold = Files.readString(Path.of(TEST_FILE));
         assertTrue(innhold.isEmpty(), "local_tickets.txt skal være tom etter clearAllTickets()");
