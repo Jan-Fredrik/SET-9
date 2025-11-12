@@ -4,3 +4,45 @@ Kjøps-ID: 63924
 Reise: Fredrikstad - Gamlebyen -> Moss - Varnaveien
 Kjøpt: 2025-11-11 22:31:15
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 56143
+Reise: Fredrikstad - Gamlebyen -> Askim - Grøtvedt
+Kjøpt: 2025-11-12 17:24:10
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 52027
+Reise: Askim - Grønli skole -> Moss - Moss stasjon
+Kjøpt: 2025-11-12 17:29:16
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 51179
+Reise: Askim - Askim stasjon -> Askim - Askim stasjon
+Kjøpt: 2025-11-12 17:29:27
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 57086
+Reise: Fredrikstad - Biblioteket -> Fredrikstad - Biblioteket
+Kjøpt: 2025-11-12 17:29:45
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 18979
+Reise: Oslo - Majorstuen -> Tønsberg - Farmandstredet
+Kjøpt: 2025-11-12 17:30:10
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 87426
+Reise: Moss - Moss stasjon -> Oslo - Majorstuen
+Kjøpt: 2025-11-12 17:31:17
+=======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 90052
+Reise: Moss - Varnaveien -> Halden - Halden stasjon
+Kjøpt: 2025-11-12 17:31:48
+=======================
