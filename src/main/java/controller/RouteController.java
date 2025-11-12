@@ -148,7 +148,7 @@ public class RouteController {
 
         if (bekreft.equals("j")) {
             view.visMelding("\nWoohoo! Billetten er kjøpt! God tur!");
-            view.visMelding("\nBilletten din er nå lagret i 'Se billetter'!");
+            view.visMelding("\nBilletten din er nå lagret i 'Se billetter'!\n");
 
             // ---------------------------------------------------------
             // Per sin varslings-metode.
