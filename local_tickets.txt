@@ -4,3 +4,9 @@ Kjøps-ID: 63924
 Reise: Fredrikstad - Gamlebyen -> Moss - Varnaveien
 Kjøpt: 2025-11-11 22:31:15
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 56143
+Reise: Fredrikstad - Gamlebyen -> Askim - Grøtvedt
+Kjøpt: 2025-11-12 17:24:10
+=======================
