@@ -46,3 +46,9 @@ Kjøps-ID: 90052
 Reise: Moss - Varnaveien -> Halden - Halden stasjon
 Kjøpt: 2025-11-12 17:31:48
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 38672
+Reise: Askim - Grønli skole -> Moss - Varnaveien
+Kjøpt: 2025-11-13 17:29:29
+=======================
