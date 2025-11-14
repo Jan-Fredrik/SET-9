@@ -52,3 +52,9 @@ Kjøps-ID: 38672
 Reise: Askim - Grønli skole -> Moss - Varnaveien
 Kjøpt: 2025-11-13 17:29:29
 =======================
+
+==== BUSS BILLETT ====
+Kjøps-ID: 22960
+Reise: Askim - Askim torv -> Halden - Tistedal
+Kjøpt: 2025-11-14 17:50:23
+=======================

@@ -1,4 +1,4 @@
-package tests;
+package models;
 
 import models.Innlogging;
 import org.junit.jupiter.api.*;
@@ -21,7 +21,14 @@ public class InnloggingIntegrasjonstest {
     // Tester registrering og innlogging med riktig passord
     // ----------------------------------------------------
     @Test
+
+
+    //
+    // ---------------- MAHRUKH SIN TEST ---------------
+    //
     void RegistreringogInnlogging(){
+
+
         // Arrange - registrer ny bruker i databasen
         Innlogging.leggTilBruker(TEST_EMAIL, TEST_PASSORD);
 
