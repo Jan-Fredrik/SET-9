@@ -77,7 +77,7 @@ public class RuteFiltrering {
         LocalTime valgtTid = null;
 
         while (valgtTid == null) {
-            System.out.print("\nSkriv inn tidspunktet du ønsker å reise (HH:mm), ");
+            System.out.print("\nSkriv inn tidspunktet du ønsker å reise (HH:mm), \n");
             System.out.print("eller skriv \"filtrer\" for å se ruter som spesifikt passer for deg: ");
             String input = brukerInput.nextLine().trim().toLowerCase();
 

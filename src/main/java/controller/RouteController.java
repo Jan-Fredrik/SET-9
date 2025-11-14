@@ -143,10 +143,10 @@ public class RouteController {
         view.visMelding("----------------------------------------------------");
 
 
-        System.out.print("\nVil du bekrefte og kjøpe billett? (j/n): ");
+        System.out.print("\nVil du bekrefte og kjøpe billett? (ja/nei): ");
         String bekreft = brukerInput.nextLine().trim().toLowerCase();
 
-        if (bekreft.equals("j")) {
+        if (bekreft.equals("ja")) {
             view.visMelding("\nWoohoo! Billetten er kjøpt! God tur!");
             view.visMelding("\nBilletten din er nå lagret i 'Se billetter'!\n");
 
