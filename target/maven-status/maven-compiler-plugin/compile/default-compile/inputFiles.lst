@@ -15,6 +15,7 @@ C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Bus.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Database.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Ferry.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Hashing.java
+C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Innlogging.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Order.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\passord.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\profil.java
@@ -28,7 +29,6 @@ C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Train.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\models\Tram.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\repository\FakeBussAPI.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\repository\FakeBussData.java
-C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\repository\RouteRepository.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\view\KonsollView.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\view\main.java
 C:\Users\jaffe\OneDrive\Documents\GitHub\SET-9\src\main\java\view\TerminalView.java
