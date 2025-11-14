@@ -13,18 +13,18 @@ Kjernen i løsningen er en terminalbasert Java-prototype som samler ruteinformas
 Designet bygger på et brukerfokusert rammeverk for å løse utfordringer for ulike brukergrupper som rullestolbrukere, eldre og fremmedspråklige.
 
 
-# Nøkkelfunksjonalitet
-### 🚌 Tilpasset reiseplanlegging
+# 🗝️ Nøkkelfunksjonalitet
+###  Tilpasset reiseplanlegging
 - Filtreringsfunksjon for å kunne tilpasse tilgjengeligheter ved kollektiv ferdsel
 
-### 💬 Multispråklig støtte
+### Multispråklig støtte
 - Konseptuell støtte for norsk, engelsk og polsk.
 - (Ikke implementert)
 
-### 💻 Enkelt grensesnitt
+### Enkelt grensesnitt
 - Terminalbasert grensesnitt (tastatur)
 
-### 💾 Billettlagring
+### Billettlagring
 - Billetter lagres og hentes lokalt fra en tekstfil, slik at systemet fungerer uten eksterne tjenester.
 
 
